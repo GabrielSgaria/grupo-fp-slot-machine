@@ -118,18 +118,27 @@ export default function SlotMachine() {
         </div>
       </div>
 
-      <Dialog  >
-        <DialogContent>
+      <Dialog open={showPopup} onOpenChange={setShowPopup}>
+        <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>{ }</DialogTitle>
-            <DialogDescription>
-              { } <br />
-
-            </DialogDescription>
+            <DialogTitle>{selectedHouse?.name}</DialogTitle>
+            <DialogDescription>{selectedHouse?.info}</DialogDescription>
           </DialogHeader>
-          <DialogFooter>
-            <Button>Fechar</Button>
-          </DialogFooter>
+          <div className="mt-4">
+            <Image
+              width={300}
+              height={300}
+              src={selectedHouse?.src || '/placeholder.svg'}
+              alt={selectedHouse?.name || 'Placeholder'}
+              className="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <Button
+              onClick={() => window.open(selectedHouse?.link, '_blank')}
+              className="w-full"
+            >
+              Visitar Site
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
     </div >

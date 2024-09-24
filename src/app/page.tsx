@@ -4,100 +4,116 @@ import { useState, useRef } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
+import { images } from '@/lib/homes'  
 
-const images = [
-  { src: '/images/bilhar.jpg', name: 'Casa de Bilhar', info: 'A melhor casa de bilhar da região.', link: 'https://casa-de-bilhar.com' },
-  { src: '/images/cilios.jpg', name: 'Cílios Store', info: 'Oferecemos os melhores produtos de cílios.', link: 'https://cilios-store.com' },
-  { src: '/images/vaqueiro.jpg', name: 'Vaqueiro Bet', info: 'Aposta em corridas de cavalos e rodeios.', link: 'https://vaqueiro-bet.com' },
-  { src: '/images/danca.jpg', name: 'Dança Bet', info: 'O mundo das apostas de danças.', link: 'https://danca-bet.com' },
-  { src: '/images/gesto.jpg', name: 'Gesto Apostas', info: 'Aposte no seu próximo grande gesto.', link: 'https://gesto-apostas.com' }
-]
-
-export default function Component() {
+export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
-  const [results, setResults] = useState<number[]>(Array(3).fill(0).map(() => Math.floor(Math.random() * images.length)))
   const [showPopup, setShowPopup] = useState(false)
   const [selectedHouse, setSelectedHouse] = useState<typeof images[0] | null>(null)
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
-  const spin = () => {
-    setSpinning(true)
-    const winningIndex = Math.floor(Math.random() * images.length)
-    setSelectedHouse(images[winningIndex])
+  const itemHeight = 160;  // Altura de cada imagem
+  const itemSpacing = 16;  // Espaçamento entre os itens (16px no caso de `space-y-4`)
+  const visibleAreaHeight = 140;  // Altura visível do slot (área com bg-white)
 
-    const spinDuration = 3000
-    const stopInterval = 1000
+ 
+  const spinSlot = (slotIndex: number, stopId: number, callback: () => void) => {
+    const slot = slotRefs[slotIndex].current
+    if (!slot) return
 
-    const animateSlot = (slotIndex: number, duration: number) => {
-      const slot = slotRefs[slotIndex].current
-      if (!slot) return
+    let currentPosition = 0
+    let laps = 0
+    const totalLaps = 2 //
+    let running = true
 
-      let start: number | null = null
-      const totalImages = 20 // Increased number of images for smoother animation
-      const imageHeight = slot.clientHeight
+    const step = () => {
+      if (!running) return
 
-      const step = (timestamp: number) => {
-        if (!start) start = timestamp
-        const elapsed = timestamp - start
-        const progress = Math.min(elapsed / duration, 1)
+      currentPosition += (itemHeight + itemSpacing) * 0.1
 
-        const totalDistance = imageHeight * totalImages
-        const currentPosition = (progress * totalDistance) % imageHeight
+      if (currentPosition > (itemHeight + itemSpacing) * images.length) {
+        currentPosition = currentPosition % ((itemHeight + itemSpacing) * images.length)
+        laps++
+      }
 
-        slot.style.transform = `translateY(${-currentPosition}px)`
+      slot.style.transform = `translateY(-${currentPosition}px)`
+      const targetPos = images.findIndex(image => image.id === stopId) * (itemHeight + itemSpacing)
 
-        if (progress < 1) {
-          requestAnimationFrame(step)
-        } else {
-          slot.style.transform = 'translateY(0)'
-          setResults((prev) => {
-            const newResults = [...prev]
-            newResults[slotIndex] = winningIndex
-            return newResults
-          })
-        }
+      const centerOffset = (visibleAreaHeight - itemHeight) / 2;
+
+      if (laps >= totalLaps && currentPosition >= targetPos && currentPosition <= targetPos + (itemHeight + itemSpacing)) {
+        running = false
+
+        // Ajusta o `top` para `45px` ao encontrar o item correto, centralizando o item
+        slot.style.transform = `translateY(calc(-${targetPos}px + ${centerOffset}px))`
+        slot.style.top = '45px';  // Centraliza o card sorteado após o giro
+        callback()
+        return
       }
 
       requestAnimationFrame(step)
     }
 
-    // Start all slots spinning simultaneously
+    requestAnimationFrame(step)
+  }
+
+  const spin = () => {
+    setSpinning(true)
+    
+    // Sorteia o ID do item que será exibido. Aqui garantimos que o ID será sorteado corretamente, inclusive o ID 1.
+    const winningIndex = Math.floor(Math.random() * images.length)
+    const selectedId = images[winningIndex].id
+    setSelectedHouse(images[winningIndex])
+
+   
     slotRefs.forEach((_, index) => {
-      animateSlot(index, spinDuration + index * stopInterval)
+      spinSlot(index, selectedId, () => {
+        console.log(`Slot ${index + 1} parou`)
+        if (index === 2) {
+       
+          setTimeout(() => {
+            setSpinning(false)
+            setShowPopup(true)
+          }, 3000)
+        }
+      })
     })
 
-    // Stop slots sequentially
     setTimeout(() => {
-      // First slot stops
-    }, spinDuration)
+      spinSlot(0, selectedId, () => console.log('Slot 1 parou'))
+    }, 0) // O primeiro slot para imediatamente após atingir a imagem correta
 
     setTimeout(() => {
-      // Second slot stops
-    }, spinDuration + stopInterval)
+      spinSlot(1, selectedId, () => console.log('Slot 2 parou'))
+    }, 1000) // O segundo slot para com 1000ms de delay
 
     setTimeout(() => {
-      // Third slot stops
-      setSpinning(false)
-      setShowPopup(true)
-    }, spinDuration + 2 * stopInterval)
+      spinSlot(2, selectedId, () => console.log('Slot 3 parou'))
+    }, 2000) //
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-purple-600 to-blue-600 p-4">
-      <h1 className="text-4xl font-bold text-white mb-8">Slot Machine de Apostas</h1>
-      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-green-500 to-lime-500 md:p-4 w-full h-[1150px] overflow-hidden ">
+      <h1 className="text-4xl font-bold text-white mb-8">Grupo FP</h1>
+      <div className="flex justify-center space-x-4 mb-8 bg-green-600 px-4 py-6 rounded-xl relative overflow-hidden ">
+        <div className="absolute w-full h-10 inset-0 top-0 bg-gradient-to-t from-transparent to-black/30 pointer-events-none z-20" />
+        <div className="absolute w-full h-10 bottom-0 right-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none z-20" />
         {[0, 1, 2].map((index) => (
-          <div key={index} className="relative w-40 h-40 bg-white rounded-lg overflow-hidden shadow-lg">
-            <div ref={slotRefs[index]} className="absolute inset-0">
-              {[...Array(20)].map((_, i) => (
-                <Image
-                  width={300}
-                  height={300}
-                  key={i}
-                  src={images[(results[index] + i) % images.length].src}
-                  alt={images[(results[index] + i) % images.length].name}
-                  className="w-full h-40 object-cover"
-                />
+          <div
+            key={index}
+            className="flex flex-col items-center justify-center h-[200px] w-[160px] overflow-hidden "
+          >
+            <div ref={slotRefs[index]} className="flex flex-col space-y-4 absolute top-[-130px]"> 
+              {images.concat(images).map((image, i) => (
+                <div className="h-[160px] w-[160px] p-3 bg-white/90 shadow-2xl rounded-2xl" key={i}>
+                  <Image
+                    width={320}
+                    height={320}
+                    src={image.src}
+                    alt={image.name}
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -107,12 +123,12 @@ export default function Component() {
         onClick={spin}
         disabled={spinning}
         className="px-6 py-3 text-lg font-semibold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label={spinning ? 'Girando' : 'Girar slot machine'}
       >
         {spinning ? 'Girando...' : 'Girar!'}
       </Button>
 
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
+
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{selectedHouse?.name}</DialogTitle>
