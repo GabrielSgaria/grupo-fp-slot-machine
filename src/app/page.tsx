@@ -68,7 +68,6 @@ export default function SlotMachine() {
    
     slotRefs.forEach((_, index) => {
       spinSlot(index, selectedId, () => {
-        console.log(`Slot ${index + 1} parou`)
         if (index === 2) {
        
           setTimeout(() => {
@@ -80,16 +79,15 @@ export default function SlotMachine() {
     })
 
     setTimeout(() => {
-      spinSlot(0, selectedId, () => console.log('Slot 1 parou'))
-    }, 0) // O primeiro slot para imediatamente após atingir a imagem correta
+      spinSlot(0, selectedId, () => {})
+    }, 0) 
+    setTimeout(() => {
+      spinSlot(1, selectedId, () => {})
+    }, 1000) 
 
     setTimeout(() => {
-      spinSlot(1, selectedId, () => console.log('Slot 2 parou'))
-    }, 1000) // O segundo slot para com 1000ms de delay
-
-    setTimeout(() => {
-      spinSlot(2, selectedId, () => console.log('Slot 3 parou'))
-    }, 2000) //
+      spinSlot(2, selectedId, () => {})
+    }, 2000) 
   }
 
   return (
