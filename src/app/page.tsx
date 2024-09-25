@@ -147,13 +147,12 @@ export default function SlotMachine() {
         <DynamicTable />
       </div>
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
-
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{selectedHouse?.name}</DialogTitle>
             <DialogDescription>{selectedHouse?.info}</DialogDescription>
           </DialogHeader>
-          <div className="mt-4">
+          <div className="mt-4 flex flex-col items-center">
             <Image
               width={800}
               height={800}
@@ -161,11 +160,11 @@ export default function SlotMachine() {
               quality={100}
               src={selectedHouse?.src || '/placeholder.svg'}
               alt={selectedHouse?.name || 'Placeholder'}
-              className="w-full h-48 object-cover rounded-lg mb-4"
+              className="w-48 h-48 object-cover rounded-lg mb-4"
             />
             <Button
               onClick={() => window.open(selectedHouse?.link, '_blank')}
-              className="w-full"
+              className="w-full bg-green-700 hover:bg-green-600"
             >
               Visitar Site
             </Button>
