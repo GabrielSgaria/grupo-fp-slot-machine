@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from 'react'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
 import { homes } from '@/lib/homes'
@@ -11,16 +11,16 @@ import DynamicTable from '@/components/table-dynamic'
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
+  const [showHomesPopup, setShowHomesPopup] = useState(false) // Estado para o Dialog do ícone
+  const [searchTerm, setSearchTerm] = useState("") // Adiciona o estado para o termo de pesquisa
   const [selectedHouse, setSelectedHouse] = useState<typeof homes[0] | null>(null)
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
   const itemHeight = 105;  // Altura de cada imagem
   const itemSpacing = 16;  // Espaçamento entre os itens
-  // const visibleAreaHeight = 161;  // Altura visível do slot (área com bg-white)
   const startTop = -73;  // Posição inicial (acima da área visível)
   const centerPosition = 45; // Centralizar a imagem no meio da área visível
 
-  // Função para rodar cada slot e garantir que ele passe pelas imagens pelo menos 2x
   const spinSlot = (slotIndex: number, stopId: number, callback: () => void) => {
     const slot = slotRefs[slotIndex].current
     if (!slot) return
@@ -46,10 +46,9 @@ export default function SlotMachine() {
 
       if (laps >= totalLaps && currentPosition >= targetPos && currentPosition <= targetPos + (itemHeight + itemSpacing)) {
         running = false
-        // Centraliza o item sorteado no centro da área visível
-        const finalTop = centerPosition;  // Centraliza a imagem sorteada no centro da área visível
-        slot.style.transform = `translateY(-${targetPos}px)`;  // Posiciona a imagem sorteada
-        slot.style.top = `${finalTop}px`;  // Ajusta o valor de top para centralização
+        const finalTop = centerPosition
+        slot.style.transform = `translateY(-${targetPos}px)`
+        slot.style.top = `${finalTop}px`
         callback()
         return
       }
@@ -63,12 +62,10 @@ export default function SlotMachine() {
   const spin = () => {
     setSpinning(true)
 
-    // Sorteia o ID do item que será exibido
     const winningIndex = Math.floor(Math.random() * homes.length)
     const selectedId = homes[winningIndex].id
     setSelectedHouse(homes[winningIndex])
 
-    // Todos os slots começam a girar ao mesmo tempo
     slotRefs.forEach((_, index) => {
       spinSlot(index, selectedId, () => {
         if (index === 2) {
@@ -91,6 +88,11 @@ export default function SlotMachine() {
     }, 2000)
   }
 
+  // Filtra as casas de acordo com o termo de pesquisa
+  const filteredHomes = homes.filter((home) =>
+    home.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
   return (
     <div className="flex flex-col items-center justify-center bg-gradient-to-b from-green-500 to-lime-500 w-full h-[1150px] overflow-hidden ">
       <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-[1150px] relative shadow-2xl shadow-black rounded-xl bg-fundo bg-contain'>
@@ -99,7 +101,8 @@ export default function SlotMachine() {
           height={72}
           alt='Baú'
           src='/images/gifs/custom-menu-icon.gif'
-          className='rounded-full absolute top-3 left-6 md:left-5 z-20'
+          className='rounded-full absolute top-3 left-6 md:left-5 z-40 cursor-pointer'
+          onClick={() => setShowHomesPopup(true)} // Abre o Dialog ao clicar no ícone
         />
         <div className='h-[350px] w-full relative z-20'>
           <div className='rounded-full bg-no-repeat shadow-2xl w-[170px] h-[170px] left-[33%] bg-logo-fp bg-contain absolute z-30 top-[20%]' />
@@ -146,6 +149,38 @@ export default function SlotMachine() {
         </div>
         <DynamicTable />
       </div>
+
+      {/* Dialog para o popup de casas ao clicar no gif */}
+      <Dialog open={showHomesPopup} onOpenChange={setShowHomesPopup}>
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Pesquisar Casas</DialogTitle>
+            <input
+              type="text"
+              placeholder="encontrar"
+              className="w-full p-2 rounded-md border border-gray-300"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de pesquisa
+            />
+          </DialogHeader>
+          <div className="grid grid-cols-3 gap-4 mt-4">
+            {filteredHomes.map((home) => (
+              <div key={home.id} className="flex flex-col items-center justify-center">
+                <Link href={home.link} target='_blank'>
+                  <Image
+                    width={70}
+                    height={70}
+                    src={home.src}
+                    alt={home.name}
+                    className="w-[70px] h-[70px] object-cover rounded-full"
+                  />
+                  <p className="text-xs text-center mt-2">{home.name}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
         <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
