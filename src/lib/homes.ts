@@ -1,4 +1,4 @@
-export const images = [
+export const homes = [
     { id: 1, src: '/images/bilhar2.jpg', name: 'Casa de Bilhar', info: 'A melhor casa de bilhar da região.', link: 'https://casa-de-bilhar.com' },
     { id: 2, src: '/images/cilios.jpg', name: 'Cílios Store', info: 'Oferecemos os melhores produtos de cílios.', link: 'https://cilios-store.com' },
     { id: 3, src: '/images/vaqueiro.jpg', name: 'Vaqueiro Bet', info: 'Aposta em corridas de cavalos e rodeios.', link: 'https://vaqueiro-bet.com' },
