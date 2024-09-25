@@ -93,7 +93,7 @@ export default function SlotMachine() {
 
   return (
     <div className="flex flex-col items-center justify-center bg-gradient-to-b from-green-500 to-lime-500 w-full h-[1150px] overflow-hidden ">
-      <div className='w-full min-w-[475px] max-w-[475px] md:w-[510px] md:max-w-[510px] h-[1150px] relative shadow-2xl shadow-black rounded-xl bg-fundo bg-contain'>
+      <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-[1150px] relative shadow-2xl shadow-black rounded-xl bg-fundo bg-contain'>
         <Image
           width={72}
           height={72}
@@ -106,7 +106,7 @@ export default function SlotMachine() {
         </div>
 
         <div className='flex bg-image-machine w-full h-[459px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
-          <div className="rounded-2xl h-[161px] md:h-[168.3px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[353px] md:w-[375px] top-[112px] md:top-[122px]">
+          <div className="rounded-2xl h-[148px] md:h-[168.3px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[325px] md:w-[375px] left-[55px] top-[103px] md:top-[122px]">
             <div className="absolute w-full h-10 inset-0 top-0 bg-gradient-to-t from-transparent to-black/30 pointer-events-none z-20" />
             <div className="absolute w-full h-10 bottom-0 right-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none z-20" />
 
@@ -139,15 +139,16 @@ export default function SlotMachine() {
           <Button
             onClick={spin}
             disabled={spinning}
-            className="w-[200px] h-[60px] left-[29%] md:left-[30%] bg-yellow-500/20 hover:bg-yellow-500/50 text-black font-bold py-2 px-4 rounded absolute bottom-[110px] md:bottom-[90px]"
+            className="w-[200px] h-[60px] left-[27%] md:left-[30%] bg-yellow-500/20 hover:bg-yellow-500/50 text-black font-bold py-2 px-4 rounded absolute bottom-[130px] md:bottom-[90px]"
           >
             {spinning ? 'Girando...' : 'Girar!'}
           </Button>
         </div>
         <DynamicTable />
       </div>
+
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{selectedHouse?.name}</DialogTitle>
             <DialogDescription>{selectedHouse?.info}</DialogDescription>
