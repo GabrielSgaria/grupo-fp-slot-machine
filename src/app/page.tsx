@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { homes } from '@/lib/homes'
 import Link from 'next/link'
 import DynamicTable from '@/components/table-dynamic'
+import CoinExplosion from '@/components/coin-explosion'
 
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
@@ -15,6 +16,7 @@ export default function SlotMachine() {
   const [searchTerm, setSearchTerm] = useState("") // Adiciona o estado para o termo de pesquisa
   const [selectedHouse, setSelectedHouse] = useState<typeof homes[0] | null>(null)
   const [leverPulled, setLeverPulled] = useState(false) // Estado para controlar a animação da alavanca
+  const [coinVisible, setCoinVisible] = useState(false) // Estado para controlar a animação da moeda
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
   const itemHeight = 105;  // Altura de cada imagem
@@ -61,11 +63,14 @@ export default function SlotMachine() {
   }
 
   const spin = () => {
-    // Iniciar a animação da alavanca antes de começar a rotação dos slots
+    // Ativar a animação da moeda e da alavanca antes de começar a rotação dos slots
+    setCoinVisible(true) // Mostra a moeda para começar a animação
     setLeverPulled(true) // Ativa a animação da alavanca
+
     setTimeout(() => {
       setSpinning(true)
       setLeverPulled(false) // Volta o estado da alavanca ao normal
+      setCoinVisible(false) // Esconde a moeda após a animação
 
       const winningIndex = Math.floor(Math.random() * homes.length)
       const selectedId = homes[winningIndex].id
@@ -91,7 +96,7 @@ export default function SlotMachine() {
       setTimeout(() => {
         spinSlot(2, selectedId, () => { })
       }, 2000)
-    }, 1000) // Adiciona um delay de 1 segundo para a animação da alavanca
+    }, 1000) // Adiciona um delay de 1 segundo para a animação da alavanca e da moeda
   }
 
   // Filtra as casas de acordo com o termo de pesquisa
@@ -100,19 +105,21 @@ export default function SlotMachine() {
   )
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden py-5">
-      <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
-        <Image
-          width={72}
-          height={72}
-          alt='Baú'
-          src='/images/gifs/custom-menu-icon.gif'
-          className='rounded-full absolute top-3 left-6 md:left-5 z-40 cursor-pointer'
-          onClick={() => setShowHomesPopup(true)}
-        />
+    <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden py-5 bg-black/5 backdrop-blur-md ">
+      <div className='w-full min-w-[435px]  max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative bg-fundo bg-contain shadow-2xl shadow-green-800 rounded-xl '>
 
-        <div className='h-[270px] w-full relative z-20'>
-          <div className='rounded-full bg-no-repeat shadow-2xl w-[140px] h-[140px] left-[36%] bg-logo-fp bg-contain absolute z-30 top-[20%]' />
+
+        <div className='h-[270px] w-full relative z-50'>
+          <div className='rounded-full bg-no-repeat shadow-2xl w-[140px] h-[140px] left-[36%] bg-logo-fp bg-contain absolute z-50 top-[20%]' />
+          <Image
+            width={72}
+            height={72}
+            alt='Baú'
+            src='/images/gifs/custom-menu-icon.gif'
+            className='rounded-full absolute top-3 left-6 md:left-5 z-40 cursor-pointer'
+            onClick={() => setShowHomesPopup(true)}
+          />
+          <CoinExplosion />
         </div>
 
         <div className='flex bg-image-machine w-full h-[562px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
@@ -147,14 +154,23 @@ export default function SlotMachine() {
 
           </div>
 
-          {/* Alavanca ao lado do botão */}
+          {coinVisible && (
+            <Image
+              src="/images/icons/coin2.png"
+              alt="Coin"
+              width={50}
+              height={50}
+              className="absolute w-7 top-[-60px] left-[50%] transform translate-x-[-50%] z-30 animate-showCoin"
+            />
+          )}
+
           <Image
             src="/images/icons/icon-lever.png"
             alt="Alavanca"
             width={220}
             height={400}
-            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''}`} // Animação de puxar a alavanca
-            onClick={spin} // Ao clicar na alavanca, ativa a função de spin
+            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''} ${spinning ? "pointer-events-none" : ""}`} // Adiciona "pointer-events-none" enquanto estiver girando
+            onClick={!spinning ? spin : undefined} // Desabilita a alavanca enquanto estiver girando
           />
 
           <Button
