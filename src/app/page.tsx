@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { homes } from '@/lib/homes'
 import Link from 'next/link'
 import DynamicTable from '@/components/table-dynamic'
+// import CoinExplosion from '@/components/coin-explosion'
 
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
@@ -94,22 +95,23 @@ export default function SlotMachine() {
   )
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-green-500 to-lime-500 w-full h-[1150px] overflow-hidden ">
-      <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-[1150px] relative shadow-2xl shadow-black rounded-xl bg-fundo bg-contain'>
+    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-green-500 to-lime-500 w-full h-[1150px] overflow-hidden">
+      <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-[1200px] relative shadow-2xl shadow-black rounded-xl bg-fundo bg-contain'>
         <Image
           width={72}
           height={72}
           alt='Baú'
           src='/images/gifs/custom-menu-icon.gif'
           className='rounded-full absolute top-3 left-6 md:left-5 z-40 cursor-pointer'
-          onClick={() => setShowHomesPopup(true)} // Abre o Dialog ao clicar no ícone
+          onClick={() => setShowHomesPopup(true)}
         />
-        <div className='h-[350px] w-full relative z-20'>
-          <div className='rounded-full bg-no-repeat shadow-2xl w-[170px] h-[170px] left-[33%] bg-logo-fp bg-contain absolute z-30 top-[20%]' />
+        {/* <CoinExplosion /> */}
+        <div className='h-[270px] w-full relative z-20'>
+          <div className='rounded-full bg-no-repeat shadow-2xl w-[140px] h-[140px] left-[36%] bg-logo-fp bg-contain absolute z-30 top-[20%]' />
         </div>
 
-        <div className='flex bg-image-machine w-full h-[459px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
-          <div className="rounded-2xl h-[148px] md:h-[168.3px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[325px] md:w-[375px] left-[55px] top-[103px] md:top-[122px]">
+        <div className='flex bg-image-machine w-full h-[562px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
+          <div className="rounded-2xl h-[148px] md:h-[168.3px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[312px] md:w-[355px] left-[61px] md:left-[79px] top-[248px] md:top-[292px]">
             <div className="absolute w-full h-10 inset-0 top-0 bg-gradient-to-t from-transparent to-black/30 pointer-events-none z-20" />
             <div className="absolute w-full h-10 bottom-0 right-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none z-20" />
 
@@ -120,7 +122,7 @@ export default function SlotMachine() {
               >
                 <div ref={slotRefs[index]} className="flex flex-col space-y-4 absolute" style={{ top: `${startTop}px` }}>
                   {homes.concat(homes).map((image, i) => (
-                    <div className="w-[105px] h-[105px]  bg-white p-2 rounded-xl" key={i}>
+                    <div className="w-[97px] h-[105px] bg-white p-2 rounded-xl" key={i}>
                       <Link href={image.link} target='_blank'>
                         <Image
                           width={320}
@@ -129,7 +131,7 @@ export default function SlotMachine() {
                           priority
                           src={image.src}
                           alt={image.name}
-                          className="w-full h-full object-cover rounded-md"
+                          className="w-full h-full object-fill rounded-md"
                         />
                       </Link>
                     </div>
@@ -142,7 +144,7 @@ export default function SlotMachine() {
           <Button
             onClick={spin}
             disabled={spinning}
-            className="w-[200px] h-[60px] left-[27%] md:left-[30%] bg-yellow-500/20 hover:bg-yellow-500/50 text-black font-bold py-2 px-4 rounded absolute bottom-[130px] md:bottom-[90px]"
+            className="w-[150px] h-[45px] left-[34%] md:left-[35%] bottom-[105px] md:bottom-[28px] bg-yellow-500/10 hover:bg-yellow-500/50 text-transparent font-bold py-2 px-4 rounded absolute"
           >
             {spinning ? 'Girando...' : 'Girar!'}
           </Button>
@@ -154,7 +156,7 @@ export default function SlotMachine() {
       <Dialog open={showHomesPopup} onOpenChange={setShowHomesPopup}>
         <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Pesquisar Casas</DialogTitle>
+            <DialogTitle>Pesquisar Plataformas</DialogTitle>
             <input
               type="text"
               placeholder="encontrar"

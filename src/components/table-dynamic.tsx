@@ -39,7 +39,7 @@ const TableDynamic = () => {
       // Remover a linha mais antiga e adicionar uma nova no topo da lista
       setRows((prevRows) => {
         const newRow = generateRandomData();
-        return [newRow, ...prevRows.slice(0, 99)]; // Mantém no máximo 100 linhas
+        return [newRow, ...prevRows.slice(0, 9)]; // Mantém no máximo 100 linhas
       });
     }, 1000); // Atualizar a cada 1 segundo
 
@@ -47,7 +47,7 @@ const TableDynamic = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#fd3051] flex flex-col overflow-hidden absolute h-full items-center justify-start px-5">
+    <div className="w-full bg-green-fp flex flex-col overflow-hidden absolute h-full items-center justify-start px-5">
       <div className='flex h-[22px] w-full text-lg font-bold items-center justify-center to-green-700 from-green-600 bg-gradient-to-t text-white py-5 rounded-t-xl'>
         <p className='flex-1 text-center'>Hora</p>
         <p className='flex-1 text-center'>Id</p>
