@@ -100,8 +100,8 @@ export default function SlotMachine() {
   )
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-green-500 to-lime-500 w-full h-[1150px] overflow-hidden">
-      <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-[1200px] relative shadow-2xl shadow-black rounded-xl bg-fundo bg-contain'>
+    <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden py-5">
+      <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
         <Image
           width={72}
           height={72}
@@ -153,7 +153,8 @@ export default function SlotMachine() {
             alt="Alavanca"
             width={220}
             height={400}
-            className={`absolute w-10 right-[16.9%] md:right-[17.9%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 ${leverPulled ? 'translate-y-[14px] translate-x-[6px]' : ''}`} // Animação de puxar a alavanca
+            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''}`} // Animação de puxar a alavanca
+            onClick={spin} // Ao clicar na alavanca, ativa a função de spin
           />
 
           <Button

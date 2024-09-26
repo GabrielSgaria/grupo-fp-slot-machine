@@ -74,11 +74,9 @@
   }
 }
 
-
-
 #coinRainContainer {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: -40px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -90,7 +88,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  background-image: url('/images//icons/coin.png'); /* Caminho da imagem da moeda */
+  background-image: url('/images//icons/coin.png');  
   background-size: contain;
   background-repeat: no-repeat;
   animation: fallAndBounce 2s ease-out forwards;
@@ -98,7 +96,7 @@
 
 @keyframes explode {
   to {
-    transform: translate(var(--x), var(--y)) scale(0.5);
+    transform: translate(var(--x), var(--y)) scale(0.4);
     opacity: 0;
   }
 }
