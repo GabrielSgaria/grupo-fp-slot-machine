@@ -7,7 +7,6 @@ import Image from 'next/image'
 import { homes } from '@/lib/homes'
 import Link from 'next/link'
 import DynamicTable from '@/components/table-dynamic'
-// import CoinExplosion from '@/components/coin-explosion'
 
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
@@ -15,6 +14,7 @@ export default function SlotMachine() {
   const [showHomesPopup, setShowHomesPopup] = useState(false) // Estado para o Dialog do ícone
   const [searchTerm, setSearchTerm] = useState("") // Adiciona o estado para o termo de pesquisa
   const [selectedHouse, setSelectedHouse] = useState<typeof homes[0] | null>(null)
+  const [leverPulled, setLeverPulled] = useState(false) // Estado para controlar a animação da alavanca
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
   const itemHeight = 105;  // Altura de cada imagem
@@ -61,32 +61,37 @@ export default function SlotMachine() {
   }
 
   const spin = () => {
-    setSpinning(true)
+    // Iniciar a animação da alavanca antes de começar a rotação dos slots
+    setLeverPulled(true) // Ativa a animação da alavanca
+    setTimeout(() => {
+      setSpinning(true)
+      setLeverPulled(false) // Volta o estado da alavanca ao normal
 
-    const winningIndex = Math.floor(Math.random() * homes.length)
-    const selectedId = homes[winningIndex].id
-    setSelectedHouse(homes[winningIndex])
+      const winningIndex = Math.floor(Math.random() * homes.length)
+      const selectedId = homes[winningIndex].id
+      setSelectedHouse(homes[winningIndex])
 
-    slotRefs.forEach((_, index) => {
-      spinSlot(index, selectedId, () => {
-        if (index === 2) {
-          setTimeout(() => {
-            setSpinning(false)
-            setShowPopup(true)
-          }, 3000)
-        }
+      slotRefs.forEach((_, index) => {
+        spinSlot(index, selectedId, () => {
+          if (index === 2) {
+            setTimeout(() => {
+              setSpinning(false)
+              setShowPopup(true)
+            }, 3000)
+          }
+        })
       })
-    })
 
-    setTimeout(() => {
-      spinSlot(0, selectedId, () => { })
-    }, 0)
-    setTimeout(() => {
-      spinSlot(1, selectedId, () => { })
-    }, 1000)
-    setTimeout(() => {
-      spinSlot(2, selectedId, () => { })
-    }, 2000)
+      setTimeout(() => {
+        spinSlot(0, selectedId, () => { })
+      }, 0)
+      setTimeout(() => {
+        spinSlot(1, selectedId, () => { })
+      }, 1000)
+      setTimeout(() => {
+        spinSlot(2, selectedId, () => { })
+      }, 2000)
+    }, 1000) // Adiciona um delay de 1 segundo para a animação da alavanca
   }
 
   // Filtra as casas de acordo com o termo de pesquisa
@@ -141,6 +146,16 @@ export default function SlotMachine() {
             ))}
 
           </div>
+
+          {/* Alavanca ao lado do botão */}
+          <Image
+            src="/images/icons/icon-lever.png"
+            alt="Alavanca"
+            width={220}
+            height={400}
+            className={`absolute w-10 right-[16.9%] md:right-[17.9%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 ${leverPulled ? 'translate-y-[14px] translate-x-[6px]' : ''}`} // Animação de puxar a alavanca
+          />
+
           <Button
             onClick={spin}
             disabled={spinning}
@@ -160,7 +175,6 @@ export default function SlotMachine() {
         <DynamicTable />
       </div>
 
-      {/* Dialog para o popup de casas ao clicar no gif */}
       <Dialog open={showHomesPopup} onOpenChange={setShowHomesPopup}>
         <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
           <DialogHeader>
