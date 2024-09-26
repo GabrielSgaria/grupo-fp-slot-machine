@@ -12,7 +12,7 @@ const config: Config = {
 			backgroundImage: {
 				'image-machine': 'url(/images/bg/jackpot.png)',
 				'logo-fp': "url(/images/logo/logo-fp2.png)",
-				'fundo': 'url(/images/bg/fundo.png)'
+				'fundo': 'url(/images/bg/fundo01.png)'
 			},
 			colors: {
 				'yellow-fp': 'rgba(254,230,21,255)',

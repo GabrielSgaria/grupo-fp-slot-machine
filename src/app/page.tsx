@@ -105,7 +105,7 @@ export default function SlotMachine() {
           className='rounded-full absolute top-3 left-6 md:left-5 z-40 cursor-pointer'
           onClick={() => setShowHomesPopup(true)}
         />
-        {/* <CoinExplosion /> */}
+
         <div className='h-[270px] w-full relative z-20'>
           <div className='rounded-full bg-no-repeat shadow-2xl w-[140px] h-[140px] left-[36%] bg-logo-fp bg-contain absolute z-30 top-[20%]' />
         </div>
@@ -144,9 +144,17 @@ export default function SlotMachine() {
           <Button
             onClick={spin}
             disabled={spinning}
-            className="w-[150px] h-[45px] left-[34%] md:left-[35%] bottom-[105px] md:bottom-[28px] bg-yellow-500/10 hover:bg-yellow-500/50 text-transparent font-bold py-2 px-4 rounded absolute"
+            className="w-[194px] h-[70px] md:w-[224px] md:h-[81px] left-[28%] md:left-[28%] bottom-[91px] md:bottom-[11px] absolute hover:bg-transparent bg-transparent shadow-none"
           >
-            {spinning ? 'Girando...' : 'Girar!'}
+            <Image
+              width={320}
+              height={320}
+              quality={100}
+              priority
+              src="/images/icons/button.png"
+              alt="Button spin"
+              className={`w-full h-full object-fill transition-all opacity-95 ${spinning ? "brightness-100" : "brightness-110 animate-pulse"}`}
+            />
           </Button>
         </div>
         <DynamicTable />
