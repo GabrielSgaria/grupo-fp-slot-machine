@@ -86,8 +86,8 @@
 
 .coin {
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background-image: url('/images/icons/coin.png');  
   background-size: contain;
   background-repeat: no-repeat;
@@ -153,4 +153,23 @@
 
 .animalIcon img {
   object-fit: cover;
+}
+
+
+@keyframes coinFall {
+  0% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(150vh);
+    opacity: 0;
+  }
+}
+
+.animate-coinFall {
+  animation: coinFall 5s ease-in-out forwards;
 }

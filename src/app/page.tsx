@@ -12,17 +12,43 @@ import { AnimalBox } from '@/components/anima-box'
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
-  const [showHomesPopup, setShowHomesPopup] = useState(false) // Estado para o Dialog do ícone
-  const [searchTerm, setSearchTerm] = useState("") // Adiciona o estado para o termo de pesquisa
+  const [showHomesPopup, setShowHomesPopup] = useState(false)
+  const [searchTerm, setSearchTerm] = useState("")
   const [selectedHouse, setSelectedHouse] = useState<typeof homes[0] | null>(null)
-  const [leverPulled, setLeverPulled] = useState(false) // Estado para controlar a animação da alavanca
-  const [coinVisible, setCoinVisible] = useState(false) // Estado para controlar a animação da moeda
+  const [leverPulled, setLeverPulled] = useState(false)
+  const [coinVisible, setCoinVisible] = useState(false)
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
-  const itemHeight = 105;  // Altura de cada imagem
-  const itemSpacing = 16;  // Espaçamento entre os itens
-  const startTop = -73;  // Posição inicial (acima da área visível)
-  const centerPosition = 45; // Centralizar a imagem no meio da área visível
+  const itemHeight = 105;
+  const itemSpacing = 16;
+  const startTop = -73;
+  const centerPosition = 45;
+
+  // Função que faz a chuva de moedas
+  const startCoinRain = () => {
+    const container = document.getElementById('coinRainContainer');
+    if (!container) return;
+
+    const totalCoins = 120; // Número de moedas a serem geradas
+    for (let i = 0; i < totalCoins; i++) {
+      const coin = document.createElement('div');
+      coin.className = 'coin absolute w-6 h-6 animate-coinFall';
+      coin.style.left = `${Math.random() * 100}%`; // Posição horizontal aleatória
+      coin.style.animationDelay = `${Math.random() * 2}s`; // Atraso aleatório entre 0 e 2 segundos
+      container.appendChild(coin);
+
+      // Remove a moeda após a animação
+      setTimeout(() => {
+        container.removeChild(coin);
+      }, 4000); // tempo de duração da animação
+    }
+  };
+
+  // Função para tocar o som da máquina de slot
+  const playSlotSound = () => {
+    const audio = new Audio('/sounds/audio.mp3'); // Certifique-se que o caminho está correto
+    audio.play();
+  };
 
   const spinSlot = (slotIndex: number, stopId: number, callback: () => void) => {
     const slot = slotRefs[slotIndex].current
@@ -30,13 +56,16 @@ export default function SlotMachine() {
 
     let currentPosition = 0
     let laps = 0
-    const totalLaps = 2 // Mínimo de voltas completas
+    const totalLaps = 2
     let running = true
+
+    if (slotIndex === 0) {
+      playSlotSound(); // Toca o som apenas no início do giro do primeiro slot
+    }
 
     const step = () => {
       if (!running) return
-
-      currentPosition += (itemHeight + itemSpacing) * 0.1  // Controla a velocidade da rotação
+      currentPosition += (itemHeight + itemSpacing) * 0.1
 
       if (currentPosition > (itemHeight + itemSpacing) * homes.length) {
         currentPosition = currentPosition % ((itemHeight + itemSpacing) * homes.length)
@@ -44,7 +73,6 @@ export default function SlotMachine() {
       }
 
       slot.style.transform = `translateY(-${currentPosition}px)`
-
       const targetPos = homes.findIndex(image => image.id === stopId) * (itemHeight + itemSpacing)
 
       if (laps >= totalLaps && currentPosition >= targetPos && currentPosition <= targetPos + (itemHeight + itemSpacing)) {
@@ -63,14 +91,13 @@ export default function SlotMachine() {
   }
 
   const spin = () => {
-    // Ativar a animação da moeda e da alavanca antes de começar a rotação dos slots
-    setCoinVisible(true) // Mostra a moeda para começar a animação
-    setLeverPulled(true) // Ativa a animação da alavanca
+    setCoinVisible(true)
+    setLeverPulled(true)
 
     setTimeout(() => {
       setSpinning(true)
-      setLeverPulled(false) // Volta o estado da alavanca ao normal
-      setCoinVisible(false) // Esconde a moeda após a animação
+      setLeverPulled(false)
+      setCoinVisible(false)
 
       const winningIndex = Math.floor(Math.random() * homes.length)
       const selectedId = homes[winningIndex].id
@@ -96,16 +123,18 @@ export default function SlotMachine() {
       setTimeout(() => {
         spinSlot(2, selectedId, () => { })
       }, 2000)
-    }, 1000) // Adiciona um delay de 1 segundo para a animação da alavanca e da moeda
+
+      // Inicia a chuva de moedas quando a função spin for ativada
+      startCoinRain();
+    }, 1000)
   }
 
-  // Filtra as casas de acordo com o termo de pesquisa
   const filteredHomes = homes.filter((home) =>
     home.name.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden py-5">
+    <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden pb-5">
       <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
         <Image
           width={72}
@@ -117,9 +146,11 @@ export default function SlotMachine() {
         />
 
         <div className='h-[220px] w-full relative'>
-          {/* <div className='rounded-full bg-no-repeat shadow-2xl w-[140px] h-[140px] left-[36%] bg-logo-fp bg-contain absolute z-50 top-[20%]' /> */}
           <AnimalBox />
         </div>
+
+        {/* Container onde a chuva de moedas vai acontecer */}
+        <div id="coinRainContainer" className="absolute top-0 left-0 w-full h-full z-50 pointer-events-none"></div>
 
         <div className='flex bg-image-machine w-full h-[562px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
           <div className="rounded-2xl h-[148px] md:h-[168.3px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[312px] md:w-[355px] left-[61px] md:left-[79px] top-[248px] md:top-[292px]">
@@ -163,14 +194,13 @@ export default function SlotMachine() {
             />
           )}
 
-
           <Image
             src="/images/icons/icon-lever.png"
             alt="Alavanca"
             width={220}
             height={400}
-            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''} ${spinning ? "pointer-events-none" : ""}`} // Adiciona "pointer-events-none" enquanto estiver girando
-            onClick={!spinning ? spin : undefined} // Desabilita a alavanca enquanto estiver girando
+            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''} ${spinning ? "pointer-events-none" : ""}`} 
+            onClick={!spinning ? spin : undefined} 
           />
 
           <Button
@@ -201,7 +231,7 @@ export default function SlotMachine() {
               placeholder="encontrar"
               className="w-full p-2 rounded-md border border-gray-300"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de pesquisa
+              onChange={(e) => setSearchTerm(e.target.value)} 
             />
           </DialogHeader>
           <div className="grid grid-cols-3 gap-4 mt-4">

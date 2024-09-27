@@ -47,7 +47,7 @@ const TableDynamic = () => {
   }, []);
 
   return (
-    <div className="w-full bg-green-fp flex flex-col overflow-hidden absolute h-[278px] rounded-b-xl items-center justify-start px-5 border-b-2xl">
+    <div className="w-full bg-green-fp flex flex-col overflow-hidden absolute h-[358px] rounded-b-xl items-center justify-start px-5 border-b-2xl">
       <div className='flex h-[22px] mt-5 w-full text-lg font-bold items-center justify-center to-green-700 from-green-600 bg-gradient-to-t text-white py-5 rounded-t-xl'>
         <p className='flex-1 text-center'>Hora</p>
         <p className='flex-1 text-center'>Id</p>
