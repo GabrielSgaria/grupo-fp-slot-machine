@@ -88,7 +88,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  background-image: url('/images//icons/coin.png');  
+  background-image: url('/images/icons/coin.png');  
   background-size: contain;
   background-repeat: no-repeat;
   animation: fallAndBounce 2s ease-out forwards;
@@ -135,3 +135,22 @@
   animation: showCoin 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 
+.animalBox {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 1.25rem;
+  gap: 1rem;
+}
+
+.animalIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out; 
+  
+}
+
+.animalIcon img {
+  object-fit: cover;
+}
