@@ -247,7 +247,7 @@ export default function SlotMachine() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </DialogHeader>
-          <div className="grid grid-cols-3 gap-4 mt-4  max-h-[600px] overflow-y-scroll">
+          <div className="grid grid-cols-3 gap-4 mt-4 max-h-[60svh] overflow-y-scroll">
             {filteredHomes.map((home) => (
               <div key={home.id} className="flex flex-col items-center justify-center">
                 <Link href={home.link} target='_blank'>
