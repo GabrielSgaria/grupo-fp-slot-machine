@@ -12,5 +12,54 @@ export const homes = [
   { id: 11, src: '/images/grafitti.jpg', name: 'Grafitti PG', info: 'Lançamento Grafitti PG - Grupo FP OFICIAL.', link: 'https://grafittipg.com' },
   { id: 12, src: '/images/honra.jpg', name: 'Honra PG', info: 'Lançamento Honra PG - Grupo FP OFICIAL.', link: 'https://honrapg.com' },
   { id: 13, src: '/images/familia.jpg', name: 'Familia PG', info: 'Lançamento Familia PG - Grupo FP OFICIAL.', link: 'https://familiapg.com' },
-  { id: 14, src: '/images/petala.jpg', name: 'Petala PG', info: 'Lançamento Petala PG - Grupo FP OFICIAL.', link: 'https://petalapg.com' }
+  { id: 14, src: '/images/petala.jpg', name: 'Petala PG', info: 'Lançamento Petala PG - Grupo FP OFICIAL.', link: 'https://petalapg.com' },
+  { id: 15, src: '/images/aeronavepg.jpg', name: 'Aeronave PG', info: 'Lançamento Aeronave PG - Grupo FP OFICIAL.', link: 'https://aeronavepg.com' },
+  { id: 16, src: '/images/alegriapg.jpg', name: 'Alegria PG', info: 'Lançamento Alegria PG - Grupo FP OFICIAL.', link: 'https://alegriapg.com' },
+  { id: 17, src: '/images/amadopg.jpg', name: 'Amado PG', info: 'Lançamento Amado PG - Grupo FP OFICIAL.', link: 'https://amadopg.com' },
+  { id: 18, src: '/images/amigaspg.jpg', name: 'Amigas PG', info: 'Lançamento Amigas PG - Grupo FP OFICIAL.', link: 'https://amigaspg.com' },
+  { id: 19, src: '/images/anelpg.jpg', name: 'Anel PG', info: 'Lançamento Anel PG - Grupo FP OFICIAL.', link: 'https://anelpg.com' },
+  { id: 20, src: '/images/bolopg.jpg', name: 'Bolo PG', info: 'Lançamento Bolo PG - Grupo FP OFICIAL.', link: 'https://bolopg.com' },
+  { id: 21, src: '/images/borboletaspg.jpg', name: 'Borboletas PG', info: 'Lançamento Borboletas PG - Grupo FP OFICIAL.', link: 'https://borboletaspg.com' },
+  { id: 22, src: '/images/cisnepg.jpg', name: 'Cisne PG', info: 'Lançamento Cisne PG - Grupo FP OFICIAL.', link: 'https://cisnepg.com' },
+  { id: 23, src: '/images/cocacolapg.jpg', name: 'Cocacola PG', info: 'Lançamento Cocacola PG - Grupo FP OFICIAL.', link: 'https://cocacolapg.com' },
+  { id: 24, src: '/images/colarpg.jpg', name: 'Colar PG', info: 'Lançamento Colar PG - Grupo FP OFICIAL.', link: 'https://colarpg.com' },
+  { id: 25, src: '/images/eiffelpg.jpg', name: 'Eiffel PG', info: 'Lançamento Eiffel PG - Grupo FP OFICIAL.', link: 'https://eiffelpg.com' },
+  { id: 26, src: '/images/euteamopg.jpg', name: 'Euteamo PG', info: 'Lançamento Euteamo PG - Grupo FP OFICIAL.', link: 'https://euteamopg.com' },
+  { id: 27, src: '/images/festapg.jpg', name: 'Festa PG', info: 'Lançamento Festa PG - Grupo FP OFICIAL.', link: 'https://festapg.com' },
+  { id: 28, src: '/images/fitnesspg.jpg', name: 'Fitness PG', info: 'Lançamento Fitness PG - Grupo FP OFICIAL.', link: 'https://fitnesspg.com' },
+  { id: 29, src: '/images/gratidaopg.jpg', name: 'Gratidao PG', info: 'Lançamento Gratidao PG - Grupo FP OFICIAL.', link: 'https://gratidaopg.com' },
+  { id: 30, src: '/images/hermespg.jpg', name: 'Hermes PG', info: 'Lançamento Hermes PG - Grupo FP OFICIAL.', link: 'https://hermespg.com' },
+  { id: 31, src: '/images/manicurepg.jpg', name: 'Manicure PG', info: 'Lançamento Manicure PG - Grupo FP OFICIAL.', link: 'https://manicurepg.com' },
+  { id: 32, src: '/images/mentapg.jpg', name: 'Menta PG', info: 'Lançamento Menta PG - Grupo FP OFICIAL.', link: 'https://mentapg.com' },
+  { id: 33, src: '/images/nordestepg.jpg', name: 'Nordeste PG', info: 'Lançamento Nordeste PG - Grupo FP OFICIAL.', link: 'https://nordestepg.com' },
+  { id: 34, src: '/images/nortepg.jpg', name: 'Norte PG', info: 'Lançamento Norte PG - Grupo FP OFICIAL.', link: 'https://nortepg.com' },
+  { id: 35, src: '/images/outonopg.jpg', name: 'Outono PG', info: 'Lançamento Outono PG - Grupo FP OFICIAL.', link: 'https://outonopg.com' },
+  { id: 36, src: '/images/pagodepg.jpg', name: 'Pagode PG', info: 'Lançamento Pagode PG - Grupo FP OFICIAL.', link: 'https://pagodepg.com' },
+  { id: 37, src: '/images/pascoapg.jpg', name: 'Pascoa PG', info: 'Lançamento Pascoa PG - Grupo FP OFICIAL.', link: 'https://pascoapg.com' },
+  { id: 38, src: '/images/pizzapg.jpg', name: 'Pizza PG', info: 'Lançamento Pizza PG - Grupo FP OFICIAL.', link: 'https://pizzapg.com' },
+  { id: 39, src: '/images/pulseirapg.jpg', name: 'Pulseira PG', info: 'Lançamento Pulseira PG - Grupo FP OFICIAL.', link: 'https://pulseirapg.com' },
+  { id: 40, src: '/images/saladapg.jpg', name: 'Salada PG', info: 'Lançamento Salada PG - Grupo FP OFICIAL.', link: 'https://saladapg.com' },
+  { id: 41, src: '/images/saltoaltopg.jpg', name: 'Saltoalto PG', info: 'Lançamento Saltoalto PG - Grupo FP OFICIAL.', link: 'https://saltoaltopg.com' },
+  { id: 42, src: '/images/sheinpg.jpg', name: 'Shein PG', info: 'Lançamento Shein PG - Grupo FP OFICIAL.', link: 'https://sheinpg.com' },
+  { id: 43, src: '/images/sucopg.jpg', name: 'Suco PG', info: 'Lançamento Suco PG - Grupo FP OFICIAL.', link: 'https://sucopg.com' },
+  { id: 44, src: '/images/sudestepg.jpg', name: 'Sudeste PG', info: 'Lançamento Sudeste PG - Grupo FP OFICIAL.', link: 'https://sudestepg.com' },
+  { id: 45, src: '/images/surfistapg.jpg', name: 'Surfista PG', info: 'Lançamento Surfista PG - Grupo FP OFICIAL.', link: 'https://surfistapg.com' },
+  { id: 46, src: '/images/ufopg.jpg', name: 'Ufo PG', info: 'Lançamento Ufo PG - Grupo FP OFICIAL.', link: 'https://ufopg.com' },
+  { id: 47, src: '/images/viagempg.jpg', name: 'Viagem PG', info: 'Lançamento Viagem PG - Grupo FP OFICIAL.', link: 'https://viagempg.com' },
+  { id: 48, src: '/images/vidapg.jpg', name: 'Vida PG', info: 'Lançamento Vida PG - Grupo FP OFICIAL.', link: 'https://vidapg.com' },
+
+
+
 ]
+
+
+export const randomPhrases = [
+  "A mais compatível com você neste momento.",
+  "Perfeito para o seu momento!",
+  "A melhor opção do dia!",
+  "Sorte está no ar para você, esta é a plataforma recomendada!",
+  "O destino está ao seu lado, achamos uma plataforma para você!",
+  "A escolha perfeita para vencer!",
+  "Hoje é o seu dia de sorte!",
+  "Não perca essa oportunidade de vitória!"
+];

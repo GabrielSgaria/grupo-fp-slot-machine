@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { homes } from '@/lib/homes'; // Importando plataformas
+import { homes } from '@/lib/homes';
 
-// Definir o tipo correto para cada linha de dados
 interface RowData {
   formattedDate: string;
   id: string;
@@ -9,13 +8,12 @@ interface RowData {
   ganhos: string;
 }
 
-// Função para gerar uma linha de dados aleatórios
 const generateRandomData = (): RowData => {
-  const randomGanhos = (Math.random() * (12670 - 1) + 1).toFixed(2); // Gerar ganhos aleatórios entre 1 e 12670
-  const randomPlatform = homes[Math.floor(Math.random() * homes.length)].name; // Escolher plataforma aleatória
-  const randomId = `***${Math.floor(1000 + Math.random() * 9000)}***${Math.floor(100 + Math.random() * 900)}`; // Gerar ID aleatório
+  const randomGanhos = (Math.random() * (12670 - 1) + 1).toFixed(2); 
+  const randomPlatform = homes[Math.floor(Math.random() * homes.length)].name; 
+  const randomId = `***${Math.floor(100  + Math.random() * 900)}**${Math.floor(10 + Math.random() * 90)}`; 
 
-  const now = new Date(); // Obter hora atual de Brasília
+  const now = new Date(); 
   const formattedDate = now.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
 
   return {
@@ -27,23 +25,21 @@ const generateRandomData = (): RowData => {
 };
 
 const TableDynamic = () => {
-  // Definindo o estado como uma lista de objetos do tipo RowData
+
   const [rows, setRows] = useState<RowData[]>([]);
 
   useEffect(() => {
-    // Gerar 100 linhas de dados ao montar o componente
     const initialRows = Array.from({ length: 100 }, () => generateRandomData());
     setRows(initialRows);
 
     const interval = setInterval(() => {
-      // Remover a linha mais antiga e adicionar uma nova no topo da lista
       setRows((prevRows) => {
         const newRow = generateRandomData();
-        return [newRow, ...prevRows.slice(0, 9)]; // Mantém no máximo 100 linhas
+        return [newRow, ...prevRows.slice(0, 9)];
       });
-    }, 1000); // Atualizar a cada 1 segundo
+    }, 1000);
 
-    return () => clearInterval(interval); // Limpar intervalo ao desmontar o componente
+    return () => clearInterval(interval); 
   }, []);
 
   return (

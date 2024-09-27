@@ -4,10 +4,11 @@ import { useState, useRef } from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
-import { homes } from '@/lib/homes'
+import { homes, randomPhrases } from '@/lib/homes'
 import Link from 'next/link'
 import DynamicTable from '@/components/table-dynamic'
 import { AnimalBox } from '@/components/anima-box'
+import { StarFilledIcon } from '@radix-ui/react-icons'
 
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
@@ -17,6 +18,7 @@ export default function SlotMachine() {
   const [selectedHouse, setSelectedHouse] = useState<typeof homes[0] | null>(null)
   const [leverPulled, setLeverPulled] = useState(false)
   const [coinVisible, setCoinVisible] = useState(false)
+  const [randomPhrase, setRandomPhrase] = useState<string>("")
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
   const itemHeight = 105;
@@ -29,24 +31,24 @@ export default function SlotMachine() {
     const container = document.getElementById('coinRainContainer');
     if (!container) return;
 
-    const totalCoins = 120; // Número de moedas a serem geradas
+    const totalCoins = 120;
     for (let i = 0; i < totalCoins; i++) {
       const coin = document.createElement('div');
       coin.className = 'coin absolute w-6 h-6 animate-coinFall';
-      coin.style.left = `${Math.random() * 100}%`; // Posição horizontal aleatória
-      coin.style.animationDelay = `${Math.random() * 2}s`; // Atraso aleatório entre 0 e 2 segundos
+      coin.style.left = `${Math.random() * 100}%`;
+      coin.style.animationDelay = `${Math.random() * 2}s`;
       container.appendChild(coin);
 
-      // Remove a moeda após a animação
+
       setTimeout(() => {
         container.removeChild(coin);
-      }, 4000); // tempo de duração da animação
+      }, 4000);
     }
   };
 
-  // Função para tocar o som da máquina de slot
+
   const playSlotSound = () => {
-    const audio = new Audio('/sounds/audio.mp3'); // Certifique-se que o caminho está correto
+    const audio = new Audio('/sounds/audio.mp3');
     audio.play();
   };
 
@@ -56,11 +58,11 @@ export default function SlotMachine() {
 
     let currentPosition = 0
     let laps = 0
-    const totalLaps = 2
+    const totalLaps = 0
     let running = true
 
     if (slotIndex === 0) {
-      playSlotSound(); // Toca o som apenas no início do giro do primeiro slot
+      playSlotSound();
     }
 
     const step = () => {
@@ -103,6 +105,10 @@ export default function SlotMachine() {
       const selectedId = homes[winningIndex].id
       setSelectedHouse(homes[winningIndex])
 
+
+      const randomPhraseIndex = Math.floor(Math.random() * randomPhrases.length)
+      setRandomPhrase(randomPhrases[randomPhraseIndex])
+
       slotRefs.forEach((_, index) => {
         spinSlot(index, selectedId, () => {
           if (index === 2) {
@@ -123,8 +129,6 @@ export default function SlotMachine() {
       setTimeout(() => {
         spinSlot(2, selectedId, () => { })
       }, 2000)
-
-      // Inicia a chuva de moedas quando a função spin for ativada
       startCoinRain();
     }, 1000)
   }
@@ -141,15 +145,24 @@ export default function SlotMachine() {
           height={72}
           alt='Baú'
           src='/images/gifs/custom-menu-icon.gif'
-          className='rounded-full absolute top-3 left-6 md:left-5 z-50 cursor-pointer'
+          className='rounded-full absolute top-3 left-6 md:left-5 z-50 cursor-pointer hover:opacity-90 transition-all'
           onClick={() => setShowHomesPopup(true)}
         />
+        <Link target="_blank" href="https://www.instagram.com/fpgrupo_oficlal?igsh=NHo0MGRyMDI1aDFx">
+          <Image
+            width={72}
+            height={72}
+            alt='Baú'
+            src='/images/icons/ig2.png'
+            className='rounded-full absolute top-3 right-6 md:right-5 z-50 cursor-pointer hover:opacity-90 transition-all'
+          />
+        </Link>
+
 
         <div className='h-[220px] w-full relative'>
           <AnimalBox />
         </div>
 
-        {/* Container onde a chuva de moedas vai acontecer */}
         <div id="coinRainContainer" className="absolute top-0 left-0 w-full h-full z-50 pointer-events-none"></div>
 
         <div className='flex bg-image-machine w-full h-[562px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
@@ -199,8 +212,8 @@ export default function SlotMachine() {
             alt="Alavanca"
             width={220}
             height={400}
-            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''} ${spinning ? "pointer-events-none" : ""}`} 
-            onClick={!spinning ? spin : undefined} 
+            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''} ${spinning ? "pointer-events-none" : ""}`}
+            onClick={!spinning ? spin : undefined}
           />
 
           <Button
@@ -228,10 +241,10 @@ export default function SlotMachine() {
             <DialogTitle>Pesquisar Plataformas</DialogTitle>
             <input
               type="text"
-              placeholder="encontrar"
+              placeholder="Buscar Plataformas"
               className="w-full p-2 rounded-md border border-gray-300"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)} 
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </DialogHeader>
           <div className="grid grid-cols-3 gap-4 mt-4">
@@ -254,30 +267,58 @@ export default function SlotMachine() {
       </Dialog>
 
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px]">
           <DialogHeader>
-            <DialogTitle>{selectedHouse?.name}</DialogTitle>
-            <DialogDescription>{selectedHouse?.info}</DialogDescription>
+            <DialogTitle className="text-center text-2xl font-bold ">{selectedHouse?.info}</DialogTitle>
+            <DialogDescription className="text-center text-lg">{randomPhrase}</DialogDescription>
           </DialogHeader>
+
           <div className="mt-4 flex flex-col items-center">
             <Image
-              width={800}
-              height={800}
+              width={300}
+              height={300}
               priority
               quality={100}
               src={selectedHouse?.src || '/placeholder.svg'}
               alt={selectedHouse?.name || 'Placeholder'}
               className="w-48 h-48 object-cover rounded-lg mb-4"
             />
+            {/* Exibição das estrelas */}
+            <div className="flex justify-center items-center mb-2 ">
+              <p className='mr-2 '>Recomendado: </p>
+              {[...Array(5)].map((_, i) => (
+                <StarFilledIcon color='#facc15' className='size-7' key={i} />
+              ))}
+            </div>
+
+            <p className="text-center mt-2 font-bold text-xl text-wrap max-w-[80%]">
+              A mais compativel para você neste momento é a {selectedHouse?.name}
+            </p>
+
+            <p className='font-bold text-2xl mt-2'>Jogue até 5 minutos!</p>
+
+            {/* Botão para visitar o site */}
+
+          </div>
+
+          {/* Botões de ação: ligar e fechar */}
+          <div className="flex justify-between w-full mt-4 gap-2">
             <Button
               onClick={() => window.open(selectedHouse?.link, '_blank')}
-              className="w-full bg-green-700 hover:bg-green-600"
+              className="w-1/2 bg-green-700 hover:bg-green-600 "
             >
               Visitar Site
+            </Button>
+            <Button
+              className="bg-gray-400 hover:bg-gray-500 w-1/2"
+              onClick={() => setShowPopup(false)}
+            >
+              Fechar
             </Button>
           </div>
         </DialogContent>
       </Dialog>
+
     </div>
   )
 }
