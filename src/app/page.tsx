@@ -247,7 +247,7 @@ export default function SlotMachine() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </DialogHeader>
-          <div className="grid grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-3 gap-4 mt-4  max-h-[600px] overflow-y-scroll">
             {filteredHomes.map((home) => (
               <div key={home.id} className="flex flex-col items-center justify-center">
                 <Link href={home.link} target='_blank'>
@@ -283,7 +283,7 @@ export default function SlotMachine() {
               alt={selectedHouse?.name || 'Placeholder'}
               className="w-48 h-48 object-cover rounded-lg mb-4"
             />
-            {/* Exibição das estrelas */}
+
             <div className="flex justify-center items-center mb-2 ">
               <p className='mr-2 '>Recomendado: </p>
               {[...Array(5)].map((_, i) => (
@@ -297,11 +297,7 @@ export default function SlotMachine() {
 
             <p className='font-bold text-2xl mt-2'>Jogue até 5 minutos!</p>
 
-            {/* Botão para visitar o site */}
-
           </div>
-
-          {/* Botões de ação: ligar e fechar */}
           <div className="flex justify-between w-full mt-4 gap-2">
             <Button
               onClick={() => window.open(selectedHouse?.link, '_blank')}
