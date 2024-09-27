@@ -252,13 +252,15 @@ export default function SlotMachine() {
               <div key={home.id} className="flex flex-col items-center justify-center">
                 <Link href={home.link} target='_blank'>
                   <Image
-                    width={70}
-                    height={70}
+                    width={100}
+                    height={100}
+                    quality={100}
+                    priority
                     src={home.src}
                     alt={home.name}
-                    className="w-[70px] h-[70px] object-cover rounded-full"
+                    className="w-[70px] h-[70px] object-fill rounded-full"
                   />
-                  <p className="text-xs text-center mt-2">{home.name}</p>
+                  <p className="text-xs text-center mt-2 font-bold">{home.name}</p>
                 </Link>
               </div>
             ))}
