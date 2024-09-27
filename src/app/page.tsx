@@ -93,6 +93,8 @@ export default function SlotMachine() {
   }
 
   const spin = () => {
+    if (spinning) return;
+
     setCoinVisible(true)
     setLeverPulled(true)
 
@@ -104,7 +106,6 @@ export default function SlotMachine() {
       const winningIndex = Math.floor(Math.random() * homes.length)
       const selectedId = homes[winningIndex].id
       setSelectedHouse(homes[winningIndex])
-
 
       const randomPhraseIndex = Math.floor(Math.random() * randomPhrases.length)
       setRandomPhrase(randomPhrases[randomPhraseIndex])
@@ -157,7 +158,6 @@ export default function SlotMachine() {
             className='rounded-full absolute top-3 right-6 md:right-5 z-50 cursor-pointer hover:opacity-90 transition-all'
           />
         </Link>
-
 
         <div className='h-[220px] w-full relative'>
           <AnimalBox />
