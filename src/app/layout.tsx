@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: '../../public/favicon.png',
+        url: 'https://opengraph.b-cdn.net/production/images/7c704c64-2dd3-4618-84a4-a15132b61aaf.png?token=EmBxHxLhQ87uFhy2xZtypw1n976wkA0lr93OZD7OGGc&height=302&width=305&expires=33265283505',
         width: 500,
         height: 500,
       }
