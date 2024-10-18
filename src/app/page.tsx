@@ -153,8 +153,10 @@ export default function SlotMachine() {
           <Image
             src="/images/modal/aviso1.png"
             alt="Aviso"
-            width={400}
-            height={400}
+            width={700}
+            height={700}
+            quality={100}
+            priority
             className="w-full h-auto mb-4"
           />
           <div className="flex justify-between w-full mt-4 gap-2">
@@ -180,8 +182,10 @@ export default function SlotMachine() {
           <Image
             src="/images/modal/informacoes-juridicas.png"
             alt="Informações Jurídicas"
-            width={400}
-            height={400}
+            width={700}
+            height={700}
+            quality={100}
+            priority
             className="w-full h-auto mb-4"
           />
           <Button
