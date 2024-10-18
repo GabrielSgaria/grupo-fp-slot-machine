@@ -149,7 +149,7 @@ export default function SlotMachine() {
     <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden pb-5">
       {/* Primeiro Modal */}
       <Dialog open={showModal1} onOpenChange={setShowModal1}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-green-600 border-none">
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none" showCloseButton={false}>
           <Image
             src="/images/modal/aviso1.png"
             alt="Aviso"
@@ -176,7 +176,7 @@ export default function SlotMachine() {
 
       {/* Segundo Modal */}
       <Dialog open={showModal2} onOpenChange={setShowModal2}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-green-600 border-none">
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none"  showCloseButton={false}>
           <Image
             src="/images/modal/informacoes-juridicas.png"
             alt="Informações Jurídicas"
