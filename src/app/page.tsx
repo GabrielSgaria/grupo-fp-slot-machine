@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
@@ -19,12 +19,21 @@ export default function SlotMachine() {
   const [leverPulled, setLeverPulled] = useState(false)
   const [coinVisible, setCoinVisible] = useState(false)
   const [randomPhrase, setRandomPhrase] = useState<string>("")
+  const [showModal1, setShowModal1] = useState(true) // Controle do primeiro modal
+  const [showModal2, setShowModal2] = useState(false) // Controle do segundo modal
+
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
   const itemHeight = 105;
   const itemSpacing = 16;
   const startTop = -73;
   const centerPosition = 45;
+
+  useEffect(() => {
+    if (!showModal1) {
+      setTimeout(() => setShowModal2(true), 300); // Exibir o segundo modal após o primeiro ser fechado
+    }
+  }, [showModal1]);
 
   // Função que faz a chuva de moedas
   const startCoinRain = () => {
@@ -39,13 +48,11 @@ export default function SlotMachine() {
       coin.style.animationDelay = `${Math.random() * 2}s`;
       container.appendChild(coin);
 
-
       setTimeout(() => {
         container.removeChild(coin);
       }, 4000);
     }
   };
-
 
   const playSlotSound = () => {
     const audio = new Audio('/sounds/audio.mp3');
@@ -140,6 +147,52 @@ export default function SlotMachine() {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden pb-5">
+      {/* Primeiro Modal */}
+      <Dialog open={showModal1} onOpenChange={setShowModal1}>
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-green-600 border-none">
+          <Image
+            src="/images/modal/aviso1.png"
+            alt="Aviso"
+            width={400}
+            height={400}
+            className="w-full h-auto mb-4"
+          />
+          <div className="flex justify-between w-full mt-4 gap-2">
+            <Button
+              onClick={() => window.open('http://1.1.1.1', '_blank')}
+              className="w-1/2 bg-green-800 hover:bg-green-700"
+            >
+              Acessar 1.1.1.1
+            </Button>
+            <Button
+              className="bg-gray-100 hover:bg-gray-200 text-green-600 w-1/2 "
+              onClick={() => setShowModal1(false)}
+            >
+              Fechar
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Segundo Modal */}
+      <Dialog open={showModal2} onOpenChange={setShowModal2}>
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-green-600 border-none">
+          <Image
+            src="/images/modal/informacoes-juridicas.png"
+            alt="Informações Jurídicas"
+            width={400}
+            height={400}
+            className="w-full h-auto mb-4"
+          />
+          <Button
+            className="bg-gray-100 hover:bg-gray-200 text-green-600 w-full"
+            onClick={() => setShowModal2(false)}
+          >
+            Fechar
+          </Button>
+        </DialogContent>
+      </Dialog>
+
       <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
         <Image
           width={72}
