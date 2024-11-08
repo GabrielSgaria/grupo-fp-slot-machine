@@ -7,7 +7,7 @@ export const homes = [
   { id: 6, src: '/images/audi.jpg', name: 'Audi PG', info: 'Lançamento Audi PG - Grupo FP OFICIAL', link: 'https://7audipg.com/?id=776653851&currency=BRL&type=2' },
   { id: 7, src: '/images/hermes.jpg', name: 'Hermes PG', info: 'Lançamento Hermes PG - Grupo FP OFICIAL', link: 'https://www.7hermespg.com/?id=683669648&currency=BRL&type=2' },
   { id: 8, src: '/images/million.jpg', name: 'Million PG', info: 'Lançamento Million PG - Grupo FP OFICIAL', link: 'https://www.11millionpg.com/?id=441953721&currency=BRL&type=2' },
-  { id: 9, src: '/images/gloss.jpg', name: 'Gloss PG', info: 'Lançamento Gloss PG - Grupo FP OFICIAL', link: 'https://glosspg1.com/?id=920523529&currency=BRL&type=2' },
+  { id: 9, src: '/images/gloss.jpg', name: 'Gloss PG', info: 'Lançamento Gloss PG - Grupo FP OFICIAL', link: 'https://2glosspg.com/?id=920523529&currency=BRL&type=2' },
   { id: 10, src: '/images/eiffel.jpg', name: 'Eiffel PG', info: 'Lançamento Eiffel PG - Grupo FP OFICIAL.', link: 'https://1eiffelwin.com/?id=341489336&currency=BRL&type=2' },
   { id: 11, src: '/images/pascoa.jpg', name: 'Pascoa PG', info: 'Lançamento Pascoa PG - Grupo FP OFICIAL.', link: 'https://1pascoawin.com/?id=950609492&currency=BRL&type=2' },
   { id: 12, src: '/images/cocacola.jpg', name: 'CocaCola PG', info: 'Lançamento CocaCola PG - Grupo FP OFICIAL.', link: 'https://www.7cocacolapg.com/?id=566232176&currency=BRL&type=2' },
@@ -50,6 +50,7 @@ export const homes = [
   { id: 49, src: '/images/cilios.jpg', name: 'Cilios PG', info: 'Lançamento Cilios PG - Grupo FP OFICIAL.', link: 'https://3ciliospg.com/?id=516614416&currency=BRL&type=2' },
   { id: 50, src: '/images/gesto.jpg', name: 'Gesto PG', info: 'Lançamento Gesto PG - Grupo FP OFICIAL.', link: 'https://3gestopg.com/?id=640726942&currency=BRL&type=2' },
   { id: 51, src: '/images/gucci.jpg', name: 'Gucci PG', info: 'Lançamento Gucci PG - Grupo FP OFICIAL.', link: 'https://5guccipg.com/?id=251859702&currency=BRL&type=2' },
+  { id: 52, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
 ]
 
 
