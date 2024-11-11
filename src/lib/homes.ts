@@ -1,6 +1,6 @@
 export const homes = [
-  { id: 1, src: '/images/chanel.jpg', name: 'Chanel PG', info: 'Lançamento Chanel PG - Grupo FP OFICIAL', link: 'https://5chanelpg.com/?id=495349000&currency=BRL&type=2' },
-  { id: 2, src: '/images/fplv.jpg', name: 'FPLV PG', info: 'Lançamento FPLV PG - Grupo FP OFICIAL.', link: 'https://7fplvpg.com/?id=623401615&currency=BRL&type=2' },
+  { id: 1, src: '/images/vestido.jpeg', name: 'Vestido PG', info: 'Lançamento Vestido PG - Grupo FP OFICIAL', link: 'https://vestidopg.com/?id=393399020&currency=BRL&type=2' },
+  { id: 2, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
   { id: 3, src: '/images/celine.jpg', name: 'Celine PG', info: 'Lançamento Celine PG - Grupo FP OFICIAL.', link: 'https://7celinepg.com/?id=812109725&currency=BRL&type=2' },
   { id: 4, src: '/images/ysl.jpg', name: 'Ysl PG', info: 'Lançamento Ysl PG - Grupo FP OFICIAL', link: 'https://7yslpg.com/?id=189113813&currency=BRL&type=2' },
   { id: 5, src: '/images/benz.jpg', name: 'Benz PG', info: 'Lançamento Benz PG - Grupo FP OFICIAL', link: 'https://7benzpg.com/?id=501716623&currency=BRL&type=2' },
@@ -50,8 +50,10 @@ export const homes = [
   { id: 49, src: '/images/cilios.jpg', name: 'Cilios PG', info: 'Lançamento Cilios PG - Grupo FP OFICIAL.', link: 'https://3ciliospg.com/?id=516614416&currency=BRL&type=2' },
   { id: 50, src: '/images/gesto.jpg', name: 'Gesto PG', info: 'Lançamento Gesto PG - Grupo FP OFICIAL.', link: 'https://3gestopg.com/?id=640726942&currency=BRL&type=2' },
   { id: 51, src: '/images/gucci.jpg', name: 'Gucci PG', info: 'Lançamento Gucci PG - Grupo FP OFICIAL.', link: 'https://5guccipg.com/?id=251859702&currency=BRL&type=2' },
-  { id: 52, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
+  { id: 52, src: '/images/fplv.jpg', name: 'FPLV PG', info: 'Lançamento FPLV PG - Grupo FP OFICIAL.', link: 'https://7fplvpg.com/?id=623401615&currency=BRL&type=2' },
+  { id: 53, src: '/images/chanel.jpg', name: 'Chanel PG', info: 'Lançamento Chanel PG - Grupo FP OFICIAL', link: 'https://5chanelpg.com/?id=495349000&currency=BRL&type=2' },
 ]
+
 
 
 export const randomPhrases = [
