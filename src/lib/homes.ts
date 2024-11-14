@@ -1,5 +1,5 @@
 export const homes = [
-  { id: 1, src: '/images/vestido.jpeg', name: 'Vestido PG', info: 'Lançamento Vestido PG - Grupo FP OFICIAL', link: 'https://vestidopg.com/?id=393399020&currency=BRL&type=2' },
+  { id: 1, src: '/images/vestidopg.jpeg', name: 'Vestido PG', info: 'Lançamento Vestido PG - Grupo FP OFICIAL', link: 'https://vestidopg.com/?id=393399020&currency=BRL&type=2' },
   { id: 2, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
   { id: 3, src: '/images/celine.jpg', name: 'Celine PG', info: 'Lançamento Celine PG - Grupo FP OFICIAL.', link: 'https://7celinepg.com/?id=812109725&currency=BRL&type=2' },
   { id: 4, src: '/images/ysl.jpg', name: 'Ysl PG', info: 'Lançamento Ysl PG - Grupo FP OFICIAL', link: 'https://7yslpg.com/?id=189113813&currency=BRL&type=2' },
