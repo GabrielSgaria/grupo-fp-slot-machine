@@ -20,16 +20,23 @@ export const metadata: Metadata = {
   title: "GRUPO FP - OFICIAL",
   description: "Site de sorteio de Plataformas recomendadas - GRUPO FP OFICIAL",
   metadataBase: new URL("https://www.grupofp.com.br"),
-  icons: [
-    { rel: 'apple-touch-icon', url: '/favicon.png' },
-    { rel: 'icon', url: '/favicon.png' },
-  ],
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '286x286', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicon.png', sizes: '286x286', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.png'],
+  },
   manifest: '/manifest.json',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
     title: 'PLATAFORAS - FP',
+    startupImage: [
+      '/favicon.png'
+    ],
   },
   openGraph: {
     title: "GRUPO FP - OFICIAL",
@@ -83,7 +90,9 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="286x286" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="286x286" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <GoogleAnalytics gaId="G-50F2MTE5Q1" />
