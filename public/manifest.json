@@ -1,6 +1,6 @@
 {
   "name": "PLATAFORMAS - FP",
-  "short_name": "FP PLATAFORMAS",
+  "short_name": "FP Plataformas",
   "description": "Site de sorteio de Plataformas recomendadas - GRUPO FP OFICIAL",
   "start_url": "/",
   "display": "standalone",
