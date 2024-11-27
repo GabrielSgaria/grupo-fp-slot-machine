@@ -1,0 +1,25 @@
+{
+  "name": "PLATAFORMAS - FP",
+  "short_name": "FP PLATAFORMAS",
+  "description": "Site de sorteio de Plataformas recomendadas - GRUPO FP OFICIAL",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "286x286",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://grupofp.com.br/manifest.json"
+    }
+  ]
+}
+

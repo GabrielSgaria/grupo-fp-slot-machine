@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ServiceWorkerInitializer } from "@/components/sw-initializer";
+import { DownloadAppButton } from "@/components/page-download/download-app-button";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,12 +20,22 @@ export const metadata: Metadata = {
   title: "GRUPO FP - OFICIAL",
   description: "Site de sorteio de Plataformas recomendadas - GRUPO FP OFICIAL",
   metadataBase: new URL("https://www.grupofp.com.br"),
-  icons: '/favicon.png',
+  icons: [
+    { rel: 'apple-touch-icon', url: '/favicon.png' },
+    { rel: 'icon', url: '/favicon.png' },
+  ],
+  manifest: '/manifest.json',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'PLATAFORAS - FP',
+  },
   openGraph: {
     title: "GRUPO FP - OFICIAL",
     description: "Site de sorteio de Plataformas recomendadas - GRUPO FP OFICIAL",
     url: "https://www.grupofp.com.br",
-    siteName: "FP - SINAIS SLOTS",
+    siteName: "GRUPO FP - OFICIA",
     locale: "pt_BR",
     type: "website",
     images: [
@@ -61,11 +73,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt_BR">
-    <GoogleAnalytics gaId="G-50F2MTE5Q1"/>
+       <head>
+        <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
+        <meta name="application-name" content="PLATAFORAS - FP" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="PLATAFORAS - FP" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
+      <GoogleAnalytics gaId="G-50F2MTE5Q1" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center bg-fundo bg-fill items-center`}
       >
         {children}
+        <ServiceWorkerInitializer />
+        <DownloadAppButton />
       </body>
     </html>
   );
