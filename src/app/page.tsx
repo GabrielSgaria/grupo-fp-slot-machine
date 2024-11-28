@@ -9,18 +9,18 @@ import Link from 'next/link'
 import DynamicTable from '@/components/table-dynamic'
 import { AnimalBox } from '@/components/anima-box'
 import { StarFilledIcon } from '@radix-ui/react-icons'
+import PesquisaPlataformas from '@/components/pesquisa-plataforms'
 
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
   const [showHomesPopup, setShowHomesPopup] = useState(false)
-  const [searchTerm, setSearchTerm] = useState("")
   const [selectedHouse, setSelectedHouse] = useState<typeof homes[0] | null>(null)
   const [leverPulled, setLeverPulled] = useState(false)
   const [coinVisible, setCoinVisible] = useState(false)
   const [randomPhrase, setRandomPhrase] = useState<string>("")
-  const [showModal1, setShowModal1] = useState(true) // Controle do primeiro modal
-  const [showModal2, setShowModal2] = useState(false) // Controle do segundo modal
+  const [showModal1, setShowModal1] = useState(true)
+  const [showModal2, setShowModal2] = useState(false)
 
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
@@ -31,11 +31,10 @@ export default function SlotMachine() {
 
   useEffect(() => {
     if (!showModal1) {
-      setTimeout(() => setShowModal2(true), 300); // Exibir o segundo modal após o primeiro ser fechado
+      setTimeout(() => setShowModal2(true), 300);
     }
   }, [showModal1]);
 
-  // Função que faz a chuva de moedas
   const startCoinRain = () => {
     const container = document.getElementById('coinRainContainer');
     if (!container) return;
@@ -140,10 +139,6 @@ export default function SlotMachine() {
       startCoinRain();
     }, 1000)
   }
-
-  const filteredHomes = homes.filter((home) =>
-    home.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden pb-5">
@@ -292,38 +287,7 @@ export default function SlotMachine() {
         <DynamicTable />
       </div>
 
-      <Dialog open={showHomesPopup} onOpenChange={setShowHomesPopup}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Pesquisar Plataformas</DialogTitle>
-            <input
-              type="text"
-              placeholder="Buscar Plataformas"
-              className="w-full p-2 rounded-md border border-gray-300"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </DialogHeader>
-          <div className="grid grid-cols-3 gap-4 mt-4 max-h-[60svh] overflow-y-scroll">
-            {filteredHomes.map((home) => (
-              <div key={home.id} className="flex flex-col items-center justify-center">
-                <Link href={home.link} target='_blank'>
-                  <Image
-                    width={100}
-                    height={100}
-                    quality={100}
-                    priority
-                    src={home.src}
-                    alt={home.name}
-                    className="w-[70px] h-[70px] object-fill rounded-full"
-                  />
-                  <p className="text-xs text-center mt-2 font-bold">{home.name}</p>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </DialogContent>
-      </Dialog>
+      <PesquisaPlataformas homes={homes} showHomesPopup={showHomesPopup} setShowHomesPopup={setShowHomesPopup} />
 
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
         <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px]">

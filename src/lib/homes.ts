@@ -1,7 +1,7 @@
 export const homes = [
-  { id: 1, src: '/images/vestidopg.jpeg', name: 'Vestido PG', info: 'Lançamento Vestido PG - Grupo FP OFICIAL', link: 'https://vestidopg.com/?id=393399020&currency=BRL&type=2' },
-  { id: 2, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
-  { id: 3, src: '/images/celine.jpg', name: 'Celine PG', info: 'Lançamento Celine PG - Grupo FP OFICIAL.', link: 'https://7celinepg.com/?id=812109725&currency=BRL&type=2' },
+  { id: 1, src: '/images/gucci.jpg', name: 'Gucci PG', info: 'Lançamento Gucci PG - Grupo FP OFICIAL.', link: 'https://5guccipg.com/?id=251859702&currency=BRL&type=2' },
+  { id: 2, src: '/images/fplv.jpg', name: 'FPLV PG', info: 'Lançamento FPLV PG - Grupo FP OFICIAL.', link: 'https://7fplvpg.com/?id=623401615&currency=BRL&type=2' },
+  { id: 3, src: '/images/chanel.jpg', name: 'Chanel PG', info: 'Lançamento Chanel PG - Grupo FP OFICIAL', link: 'https://5chanelpg.com/?id=495349000&currency=BRL&type=2' },
   { id: 4, src: '/images/ysl.jpg', name: 'Ysl PG', info: 'Lançamento Ysl PG - Grupo FP OFICIAL', link: 'https://7yslpg.com/?id=189113813&currency=BRL&type=2' },
   { id: 5, src: '/images/benz.jpg', name: 'Benz PG', info: 'Lançamento Benz PG - Grupo FP OFICIAL', link: 'https://7benzpg.com/?id=501716623&currency=BRL&type=2' },
   { id: 6, src: '/images/audi.jpg', name: 'Audi PG', info: 'Lançamento Audi PG - Grupo FP OFICIAL', link: 'https://7audipg.com/?id=776653851&currency=BRL&type=2' },
@@ -49,9 +49,11 @@ export const homes = [
   { id: 48, src: '/images/petala.jpg', name: 'Petala PG', info: 'Lançamento Petala PG - Grupo FP OFICIAL.', link: 'https://3petalapg.com/?id=910064537&currency=BRL&type=2' },
   { id: 49, src: '/images/cilios.jpg', name: 'Cilios PG', info: 'Lançamento Cilios PG - Grupo FP OFICIAL.', link: 'https://3ciliospg.com/?id=516614416&currency=BRL&type=2' },
   { id: 50, src: '/images/gesto.jpg', name: 'Gesto PG', info: 'Lançamento Gesto PG - Grupo FP OFICIAL.', link: 'https://3gestopg.com/?id=640726942&currency=BRL&type=2' },
-  { id: 51, src: '/images/gucci.jpg', name: 'Gucci PG', info: 'Lançamento Gucci PG - Grupo FP OFICIAL.', link: 'https://5guccipg.com/?id=251859702&currency=BRL&type=2' },
-  { id: 52, src: '/images/fplv.jpg', name: 'FPLV PG', info: 'Lançamento FPLV PG - Grupo FP OFICIAL.', link: 'https://7fplvpg.com/?id=623401615&currency=BRL&type=2' },
-  { id: 53, src: '/images/chanel.jpg', name: 'Chanel PG', info: 'Lançamento Chanel PG - Grupo FP OFICIAL', link: 'https://5chanelpg.com/?id=495349000&currency=BRL&type=2' },
+  { id: 51, src: '/images/vestidopg.jpeg', name: 'Vestido PG', info: 'Lançamento Vestido PG - Grupo FP OFICIAL', link: 'https://vestidopg.com/?id=393399020&currency=BRL&type=2' },
+  { id: 52, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
+  { id: 53, src: '/images/celine.jpg', name: 'Celine PG', info: 'Lançamento Celine PG - Grupo FP OFICIAL.', link: 'https://7celinepg.com/?id=812109725&currency=BRL&type=2' },
+  { id: 54, src: '/images/loiropg.jpeg', name: 'Loiro PG', info: 'Lançamento Loiro PG - Grupo FP OFICIAL.', link: 'https://loiropg.com/?id=186554643&currency=BRL&type=2' },
+  { id: 55, src: '/images/ondapg.jpeg', name: 'Onda PG', info: 'Lançamento Onda PG - Grupo FP OFICIAL.', link: 'https://ondaspg.com/?id=641736121&currency=BRL&type=2' },
 ]
 
 
