@@ -52,8 +52,8 @@ export const homes = [
   { id: 51, src: '/images/vestidopg.jpeg', name: 'Vestido PG', info: 'Lançamento Vestido PG - Grupo FP OFICIAL', link: 'https://vestidopg.com/?id=393399020&currency=BRL&type=2' },
   { id: 52, src: '/images/fofoca.jpeg', name: 'Fofoca PG', info: 'Lançamento Fofoca PG - Grupo FP OFICIAL.', link: 'https://6fofocapg.com/?id=647705279&currency=BRL&type=2' },
   { id: 53, src: '/images/celine.jpg', name: 'Celine PG', info: 'Lançamento Celine PG - Grupo FP OFICIAL.', link: 'https://7celinepg.com/?id=812109725&currency=BRL&type=2' },
-  { id: 54, src: '/images/loiropg.jpeg', name: 'Loiro PG', info: 'Lançamento Loiro PG - Grupo FP OFICIAL.', link: 'https://loiropg.com/?id=186554643&currency=BRL&type=2' },
-  { id: 55, src: '/images/ondapg.jpeg', name: 'Onda PG', info: 'Lançamento Onda PG - Grupo FP OFICIAL.', link: 'https://ondaspg.com/?id=641736121&currency=BRL&type=2' },
+  { id: 54, src: '/images/loiro.jpeg', name: 'Loiro PG', info: 'Lançamento Loiro PG - Grupo FP OFICIAL.', link: 'https://loiropg.com/?id=186554643&currency=BRL&type=2' },
+  { id: 55, src: '/images/onda.jpeg', name: 'Onda PG', info: 'Lançamento Onda PG - Grupo FP OFICIAL.', link: 'https://ondaspg.com/?id=641736121&currency=BRL&type=2' },
 ]
 
 
