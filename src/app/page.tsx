@@ -24,10 +24,11 @@ export default function SlotMachine() {
 
   const slotRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
 
-  const itemHeight = 105;
-  const itemSpacing = 16;
-  const startTop = -73;
-  const centerPosition = 45;
+  const itemHeight = 95;
+  const itemSpacing = 8;
+  const startTop = -50;
+  const centerPosition = 53;
+
 
   useEffect(() => {
     if (!showModal1) {
@@ -49,7 +50,7 @@ export default function SlotMachine() {
 
       setTimeout(() => {
         container.removeChild(coin);
-      }, 4000);
+      }, 5000);
     }
   };
 
@@ -146,7 +147,7 @@ export default function SlotMachine() {
       <Dialog open={showModal1} onOpenChange={setShowModal1}>
         <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none" showCloseButton={false}>
           <Image
-            src="/images/modal/aviso1.png"
+            src="/images/natal/banner/flayer1.png"
             alt="Aviso"
             width={700}
             height={700}
@@ -173,9 +174,9 @@ export default function SlotMachine() {
 
       {/* Segundo Modal */}
       <Dialog open={showModal2} onOpenChange={setShowModal2}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none"  showCloseButton={false}>
+        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none" showCloseButton={false}>
           <Image
-            src="/images/modal/informacoes-juridicas.png"
+            src="/images/natal/banner/flayer2.png"
             alt="Informações Jurídicas"
             width={700}
             height={700}
@@ -194,20 +195,26 @@ export default function SlotMachine() {
 
       <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
         <Image
-          width={72}
-          height={72}
+          width={102}
+          height={102}
+          quality={100}
+          priority
           alt='Baú'
-          src='/images/gifs/custom-menu-icon.gif'
-          className='rounded-full absolute top-3 left-6 md:left-5 z-50 cursor-pointer hover:opacity-90 transition-all'
+          src='/images/natal/gif/cofre.gif'
+          className='rounded-full absolute max-w-[72px] max-h-[72px] top-3 left-6 md:left-5 z-50 cursor-pointer hover:opacity-90 transition-all'
           onClick={() => setShowHomesPopup(true)}
+          unoptimized
         />
         <Link target="_blank" href="https://www.instagram.com/fpgrupo_oficlal?igsh=NHo0MGRyMDI1aDFx">
           <Image
-            width={72}
-            height={72}
+            width={102}
+            height={102}
+            quality={100}
+            priority
+            unoptimized
             alt='Baú'
-            src='/images/icons/ig2.png'
-            className='rounded-full absolute top-3 right-6 md:right-5 z-50 cursor-pointer hover:opacity-90 transition-all'
+            src='/images/natal/gif/instagram.gif'
+            className='rounded-full absolute max-w-[72px] max-h-[72px] top-3 right-6 md:right-5 z-50 cursor-pointer hover:opacity-90 transition-all'
           />
         </Link>
 
@@ -217,8 +224,8 @@ export default function SlotMachine() {
 
         <div id="coinRainContainer" className="absolute top-0 left-0 w-full h-full z-50 pointer-events-none"></div>
 
-        <div className='flex bg-image-machine w-full h-[562px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center'>
-          <div className="rounded-2xl h-[148px] md:h-[168.3px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[312px] md:w-[355px] left-[61px] md:left-[79px] top-[248px] md:top-[292px]">
+        <div className='flex bg-image-machine w-full h-[562px] bg-no-repeat bg-top bg-cover relative flex-nowrap px-[60px] md:px-[66px] items-center '>
+          <div className="rounded-md h-[127px] md:h-[147px] overflow-hidden flex flex-nowrap justify-center items-center bg-green-700 absolute w-[327px] md:w-[385px] left-[53px] md:left-[62px] top-[195px] md:top-[230px]">
             <div className="absolute w-full h-10 inset-0 top-0 bg-gradient-to-t from-transparent to-black/30 pointer-events-none z-20" />
             <div className="absolute w-full h-10 bottom-0 right-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none z-20" />
 
@@ -227,9 +234,9 @@ export default function SlotMachine() {
                 key={index}
                 className="flex flex-col items-center justify-center h-[200px] w-[160px] overflow-hidden relative"
               >
-                <div ref={slotRefs[index]} className="flex flex-col space-y-4 absolute" style={{ top: `${startTop}px` }}>
+                <div ref={slotRefs[index]} className="flex flex-col space-y-2 absolute" style={{ top: `${startTop}px` }}>
                   {homes.concat(homes).map((image, i) => (
-                    <div className="w-[97px] h-[105px] bg-white p-2 rounded-xl" key={i}>
+                    <div className="w-[95px] h-[95px] bg-white p-2 rounded-xl" key={i}>
                       <Link href={image.link} target='_blank'>
                         <Image
                           width={320}
@@ -255,32 +262,32 @@ export default function SlotMachine() {
               alt="Coin"
               width={50}
               height={50}
-              className="absolute w-7 top-[-60px] left-[50%] transform translate-x-[-50%] z-50 animate-showCoin"
+              className="absolute w-6 top-[-60px] left-[50%] transform translate-x-[-50%] z-50 animate-showCoin"
             />
           )}
 
           <Image
-            src="/images/icons/icon-lever.png"
+            src="/images/natal/machine/handle2.png"
             alt="Alavanca"
             width={220}
             height={400}
-            className={`absolute w-10 right-[17%] md:right-[18%] bottom-[115px] md:bottom-[40px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[14px] md:translate-y-[16px] translate-x-[6px] md:translate-x-[8px]' : ''} ${spinning ? "pointer-events-none" : ""}`}
+            className={`absolute w-10 right-[11.4%] md:right-[13%] bottom-[196px] md:bottom-[140px] transform transition-transform z-50 cursor-pointer ${leverPulled ? 'translate-y-[13px] md:translate-y-[21px] translate-x-[6px] md:translate-x-[10px]' : ''} ${spinning ? "pointer-events-none" : ""}`}
             onClick={!spinning ? spin : undefined}
           />
 
           <Button
             onClick={spin}
             disabled={spinning}
-            className="w-[194px] h-[70px] md:w-[224px] md:h-[81px] left-[28%] md:left-[28%] bottom-[91px] md:bottom-[11px] absolute hover:bg-transparent bg-transparent shadow-none"
+            className="w-[190px] h-[70px] md:w-[224px] md:h-[71px] left-[28%] md:left-[28%] bottom-[160px] md:bottom-[95px] absolute hover:bg-transparent bg-transparent shadow-none"
           >
             <Image
               width={320}
               height={320}
               quality={100}
               priority
-              src="/images/icons/button.png"
+              src="/images/natal/machine/spin-button2.png"
               alt="Button spin"
-              className={`w-full h-full object-fill transition-all opacity-95 ${spinning ? "brightness-100" : "brightness-110 animate-pulse"}`}
+              className={`w-full h-full object-fill transition-all opacity-95 ${spinning ? "brightness-100" : "brightness-110 "}`}
             />
           </Button>
         </div>

@@ -10,9 +10,9 @@ const config: Config = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'image-machine': 'url(/images/bg/jackpot.png)',
+				'image-machine': 'url(/images/natal/machine/machine.png)',
 				'logo-fp': "url(/images/logo/logo-fp2.png)",
-				'fundo': 'url(/images/bg/fundo01.png)'
+				'fundo': 'url(/images/natal/decoration/bg.png)'
 			},
 			colors: {
 				'yellow-fp': 'rgba(254,230,21,255)',

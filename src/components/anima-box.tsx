@@ -25,7 +25,7 @@ export function AnimalBox() {
     };
 
     return (
-        <div className="animalBox flex space-x-4 justify-center items-end mt-5 absolute -bottom-1 px-10 z-50 ">
+        <div className="animalBox flex space-x-4 justify-center items-end mt-5 absolute -bottom-5 px-10 z-50 ">
             {Array.from({ length: 5 }).map((_, index) => {
                 const imageSize = getImageSize(index); 
                 return (
