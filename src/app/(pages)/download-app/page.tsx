@@ -49,7 +49,7 @@ export default function DownloadPage() {
                                 />
                             </div>
                             <div className="flex-grow">
-                                <h1 className="text-2xl md:text-3xl font-bold mb-2">Gerador De Sinais FP</h1>
+                                <h1 className="text-2xl md:text-3xl font-bold mb-2">Sorteio de Plataformas<br/>GRUPO FP OFICIAL</h1>
                                 <p className="text-gray-400 mb-4">Descubra os melhores sinais para seus jogos favoritos</p>
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
                                     <MultiPlatformInstallButton />
@@ -119,7 +119,7 @@ export default function DownloadPage() {
                             </div>
                             <div className="bg-gray-700 p-4 rounded-lg">
                                 <h3 className="font-semibold mb-2">Última atualização</h3>
-                                <p>2024-10-17 14:59:55</p>
+                                <p>2024-11-29 14:59:55</p>
                             </div>
                             <div className="bg-gray-700 p-4 rounded-lg">
                                 <h3 className="font-semibold mb-2">Versão</h3>

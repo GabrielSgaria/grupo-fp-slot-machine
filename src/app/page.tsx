@@ -143,6 +143,7 @@ export default function SlotMachine() {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden pb-5">
+
       {/* Primeiro Modal */}
       <Dialog open={showModal1} onOpenChange={setShowModal1}>
         <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none" showCloseButton={false}>
@@ -194,6 +195,18 @@ export default function SlotMachine() {
       </Dialog>
 
       <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
+
+      <Image
+          width={1000}
+          height={1000}
+          quality={100}
+          priority
+          alt='Moldura natal'
+          src='/images/natal/decoration/moldura-top.png'
+          className='top-0 w-full z-[55] absolute pointer-events-none'
+        />
+
+
         <Image
           width={102}
           height={102}
