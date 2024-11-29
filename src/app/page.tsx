@@ -212,9 +212,9 @@ export default function SlotMachine() {
           height={102}
           quality={100}
           priority
-          alt='Baú'
+          alt='Baú Gif'
           src='/images/natal/gif/cofre.gif'
-          className='rounded-full absolute max-w-[72px] max-h-[72px] top-3 left-6 md:left-5 z-50 cursor-pointer hover:opacity-90 transition-all'
+          className='rounded-full absolute max-w-[72px] max-h-[72px] top-9 left-6 md:left-5 z-50 cursor-pointer hover:opacity-90 transition-all'
           onClick={() => setShowHomesPopup(true)}
           unoptimized
         />
@@ -225,9 +225,9 @@ export default function SlotMachine() {
             quality={100}
             priority
             unoptimized
-            alt='Baú'
+            alt='Instagram Gif'
             src='/images/natal/gif/instagram.gif'
-            className='rounded-full absolute max-w-[72px] max-h-[72px] top-3 right-6 md:right-5 z-50 cursor-pointer hover:opacity-90 transition-all'
+            className='rounded-full absolute max-w-[72px] max-h-[72px] top-9 right-6 md:right-9 z-50 cursor-pointer hover:opacity-90 transition-all'
           />
         </Link>
 
