@@ -238,7 +238,7 @@ export default function SlotMachine() {
           )}
 
           <Image
-            src="/images/natal/machine/handle2.png"
+            src="/images/natal/machine/handle01.png"
             alt="Alavanca"
             width={220}
             height={400}
