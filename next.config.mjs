@@ -5,6 +5,32 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     output: 'standalone',
+    images: {
+      remotePatterns: [
+          {
+              protocol: 'https',
+              hostname: 'www.facebook.com',
+              pathname: '/**',
+          },
+          {
+              protocol: 'https',
+              hostname: 'sa-east-1.graphassets.com',
+              pathname: '/**',
+          },
+          {
+              protocol: 'https',
+              hostname: 'imagedelivery.net',
+              pathname: '/**'
+          },
+          {
+              protocol: 'https',
+              hostname: 'api.cloudflare.com',
+              pathname: '/**'
+          }
+      ],
+      formats: ['image/webp', 'image/avif'],
+      minimumCacheTTL: 60 * 60 * 24, // 1 dia
+  },
     headers: async () => [
         {
           source: '/(.*)',

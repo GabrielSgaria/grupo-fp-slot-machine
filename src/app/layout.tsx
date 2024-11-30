@@ -4,6 +4,8 @@ import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ServiceWorkerInitializer } from "@/components/sw-initializer";
 import { DownloadAppButton } from "@/components/page-download/download-app-button";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -73,6 +75,7 @@ export const metadata: Metadata = {
   ]
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt_BR">
-       <head>
+      <head>
         <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
         <meta name="application-name" content="PLATAFORMAS - FP" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +102,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center bg-fundo bg-fill items-center`}
       >
-        {children}
+        <Suspense fallback={<Loading />}>
+          {children}
+        </Suspense>
         <ServiceWorkerInitializer />
         <DownloadAppButton />
       </body>

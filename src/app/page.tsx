@@ -10,6 +10,8 @@ import DynamicTable from '@/components/table-dynamic'
 import { AnimalBox } from '@/components/anima-box'
 import { StarFilledIcon } from '@radix-ui/react-icons'
 import PesquisaPlataformas from '@/components/pesquisa-plataforms'
+import Modal1 from '@/components/modals/modal1'
+import Modal2 from '@/components/modals/modal2'
 
 export default function SlotMachine() {
   const [spinning, setSpinning] = useState(false)
@@ -145,54 +147,10 @@ export default function SlotMachine() {
     <div className="flex flex-col items-center justify-center w-full h-[1150px] overflow-hidden pb-5">
 
       {/* Primeiro Modal */}
-      <Dialog open={showModal1} onOpenChange={setShowModal1}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none" showCloseButton={false}>
-          <Image
-            src="/images/natal/banner/flayer1.png"
-            alt="Aviso"
-            width={700}
-            height={700}
-            quality={100}
-            priority
-            className="w-full h-auto mb-4"
-          />
-          <div className="flex justify-between w-full mt-4 gap-2">
-            <Button
-              onClick={() => window.open('http://1.1.1.1', '_blank')}
-              className="w-1/2 bg-green-800 hover:bg-green-700"
-            >
-              Acessar 1.1.1.1
-            </Button>
-            <Button
-              className="bg-gray-100 hover:bg-gray-200 text-green-600 w-1/2 "
-              onClick={() => setShowModal1(false)}
-            >
-              Fechar
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <Modal1 showModal={showModal1} setShowModal={setShowModal1}/>
 
       {/* Segundo Modal */}
-      <Dialog open={showModal2} onOpenChange={setShowModal2}>
-        <DialogContent className="max-w-[90%] rounded-xl sm:max-w-[555px] bg-transparent shadow-none border-none" showCloseButton={false}>
-          <Image
-            src="/images/natal/banner/flayer2.png"
-            alt="Informações Jurídicas"
-            width={700}
-            height={700}
-            quality={100}
-            priority
-            className="w-full h-auto mb-4"
-          />
-          <Button
-            className="bg-gray-100 hover:bg-gray-200 text-green-600 w-full"
-            onClick={() => setShowModal2(false)}
-          >
-            Fechar
-          </Button>
-        </DialogContent>
-      </Dialog>
+      <Modal2 showModal={showModal2} setShowModal={setShowModal2}/>
 
       <div className='w-full min-w-[435px] max-w-[435px] md:w-[510px] md:max-w-[510px] h-full relative  bg-fundo bg-contain shadow-2xl shadow-black rounded-xl '>
 
@@ -214,7 +172,7 @@ export default function SlotMachine() {
           priority
           alt='Baú Gif'
           src='/images/natal/gif/cofre.gif'
-          className='rounded-full absolute max-w-[72px] max-h-[72px] top-9 left-6 md:left-5 z-50 cursor-pointer hover:opacity-90 transition-all'
+          className='rounded-full absolute max-w-[72px] max-h-[72px] top-20 left-16 md:left-14 z-50 cursor-pointer hover:opacity-90 transition-all'
           onClick={() => setShowHomesPopup(true)}
           unoptimized
         />
@@ -227,7 +185,7 @@ export default function SlotMachine() {
             unoptimized
             alt='Instagram Gif'
             src='/images/natal/gif/instagram.gif'
-            className='rounded-full absolute max-w-[72px] max-h-[72px] top-9 right-6 md:right-9 z-50 cursor-pointer hover:opacity-90 transition-all'
+            className='rounded-full absolute max-w-[72px] max-h-[72px] top-20 right-16 md:right-14 z-50 cursor-pointer hover:opacity-90 transition-all'
           />
         </Link>
 
